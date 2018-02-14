@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+    <ion-item>
+      <ion-label fixed>Username</ion-label>
+      <ion-input type="text" formControlName="userName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Repeat Your Password</ion-label>
+      <ion-input type="password" formControlName="repeatedPassword"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Full Name (Optional)</ion-label>
+      <ion-input type="text" formControlName="fullName"></ion-input>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!signUpForm.valid" (click)="onSignUp()">Sign Up</button>
+  </form>
+</ion-content>
