@@ -9,6 +9,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
 import {SignInPage} from "../pages/sign-in/sign-in";
 import {AuthService} from "../services/auth";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

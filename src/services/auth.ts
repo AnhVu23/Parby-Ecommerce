@@ -18,7 +18,7 @@ export class AuthService {
     const body = {
       'userName': userName,
       'password': password,
-      'email:': email,
+      'email': email,
       'full_name': fullName
     }
     return this.http.post(this.baseUrl + '/users', body, settings)
@@ -30,8 +30,8 @@ export class AuthService {
   }
 
   checkUserNameIfExist(userName: string) {
-    const params = new HttpParams().set('username', userName);
-    this.http.get(this.baseUrl + '/users/username', {params: params})
+    //const params = new HttpParams().set('username', userName);
+    this.http.get(this.baseUrl + '/users/username:' + userName)
       .pipe(map(response => {
         this.data = response;
         console.log(this.data);
