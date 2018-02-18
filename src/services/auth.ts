@@ -3,9 +3,9 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthService {
-  constructor( private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
-
+  authenticated = false;
   baseUrl = 'http://media.mw.metropolia.fi/wbma';
 
   signUp(userName: string, password: string, email: string, fullName?: string) {
@@ -31,4 +31,21 @@ export class AuthService {
     }
     return this.http.post(this.baseUrl + '/login', body, settings);
   }
+
+  signOut() {
+    localStorage.removeItem('token');
+  }
+
+  isAuthenticated() {
+    let token = '';
+    if (localStorage.getItem('token') !== null) {
+      token = localStorage.getItem('token');
+    }
+    console.log(token);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token)
+    };
+    return this.http.get(this.baseUrl + '/users/user', settings);
+  }
+
 }

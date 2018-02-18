@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth";
 import {HomePage} from "../home/home";
+import {MyApp} from "../../app/app.component";
 
 /**
  * Generated class for the SignInPage page.
@@ -17,7 +18,6 @@ import {HomePage} from "../home/home";
   templateUrl: 'sign-in.html',
 })
 export class SignInPage {
-
   constructor(private navCtrl: NavController, private auth: AuthService,
               private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
   }
@@ -32,8 +32,10 @@ export class SignInPage {
     this.auth.signIn(userName, password).subscribe(
       response => {
         loading.dismiss();
-        this.navCtrl.push(HomePage);
-        console.log(response);
+        const token = response['token'];
+        console.log(token);
+        localStorage.setItem('token', token);
+        this.navCtrl.setRoot(HomePage);
       },
       err => {
         loading.dismiss();
