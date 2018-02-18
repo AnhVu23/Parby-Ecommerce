@@ -7,6 +7,11 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Sign Up</ion-title>
   </ion-navbar>
 
@@ -21,20 +26,23 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>Password</ion-label>
-      <ion-input type="password" name="password" ngModel required></ion-input>
+      <ion-input type="password" name="password" ngModel required [minlength]="6" #password></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Repeat Your Password</ion-label>
-      <ion-input type="password" name="repeatedPassword" ngModel required ></ion-input>
+      <ion-label fixed>Repeat Password</ion-label>
+      <ion-input type="password" name="repeatedPassword" ngModel required [minlength]="6" #repeatedPassword></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Email</ion-label>
-      <ion-input type="email" name="email" ngModel required></ion-input>
+      <ion-input type="email" name="email" ngModel required ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Full Name</ion-label>
-      <ion-input type="text" name="fullName" ngModel></ion-input>
+      <ion-input type="text" name="fullName" ngModel ></ion-input>
     </ion-item>
-    <button ion-button type="submit" [disabled]="f.invalid">Submit</button>
+    <button ion-button type="submit" [disabled]="!f.valid || !(repeatedPassword.value === password.value)">Sign Up</button>
   </form>
+  <p *ngIf="!(repeatedPassword.value === password.value)">Re-type your password</p>
+  <hr>
+  <p class="" *ngIf="password.value.length < 6">Password must include at least 6 characters</p>
 </ion-content>

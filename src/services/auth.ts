@@ -1,12 +1,9 @@
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthService {
-  data: any;
-
-  constructor(private http: HttpClient) {
+  constructor( private http: HttpClient) {
   }
 
   baseUrl = 'http://media.mw.metropolia.fi/wbma';
@@ -16,27 +13,22 @@ export class AuthService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
     const body = {
-      'userName': userName,
+      'username': userName,
       'password': password,
       'email': email,
       'full_name': fullName
     }
-    return this.http.post(this.baseUrl + '/users', body, settings)
-      .subscribe(
-        data => {
-          console.log(data);
-        }
-      );
+    return this.http.post(this.baseUrl + '/users', body, settings);
   }
 
-  checkUserNameIfExist(userName: string) {
-    //const params = new HttpParams().set('username', userName);
-    this.http.get(this.baseUrl + '/users/username:' + userName)
-      .pipe(map(response => {
-        this.data = response;
-        console.log(this.data);
-        const available: boolean = (this.data.available === 'true');
-        return available;
-      }))
+  signIn(userName: string, password: string) {
+    const settings = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    };
+    const body = {
+      'username': userName,
+      'password': password
+    }
+    return this.http.post(this.baseUrl + '/login', body, settings);
   }
 }

@@ -10,12 +10,14 @@ import {SignInPage} from "../pages/sign-in/sign-in";
 import {AuthService} from "../services/auth";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {HomePage} from "../pages/home/home";
 
 @NgModule({
   declarations: [
     MyApp,
     SignUpPage,
-    SignInPage
+    SignInPage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import {FormsModule} from "@angular/forms";
   entryComponents: [
     MyApp,
     SignUpPage,
-    SignInPage
+    SignInPage,
+    HomePage
   ],
   providers: [
     StatusBar,
