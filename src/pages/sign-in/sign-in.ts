@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth";
-import {HomePage} from "../home/home";
-import {MyApp} from "../../app/app.component";
+import {TabsPage} from "../tabs/tabs";
 
 /**
  * Generated class for the SignInPage page.
@@ -35,7 +34,8 @@ export class SignInPage {
         const token = response['token'];
         console.log(token);
         localStorage.setItem('token', token);
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(TabsPage);
+        this.auth.authenticated = true;
       },
       err => {
         loading.dismiss();
@@ -44,6 +44,8 @@ export class SignInPage {
           message: err['error'].message,
           buttons : ['Ok']
         });
+        alert.present();
+        this.auth.authenticated = false;
         console.log(err);
       }
     );

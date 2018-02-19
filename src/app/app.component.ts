@@ -4,17 +4,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {SignInPage} from "../pages/sign-in/sign-in";
-import {HomePage} from "../pages/home/home";
 import {AuthService} from "../services/auth";
+import {TabsPage} from "../pages/tabs/tabs";
+import {CollectionsPage} from "../pages/collections/collections";
+import {ProfilePage} from "../pages/profile/profile";
+import {SettingsPage} from "../pages/settings/settings";
+import {ProductsPage} from "../pages/products/products";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = SignInPage;
+  rootPage: any = SignInPage;
   signUpPage = SignUpPage;
-  homePage = HomePage;
-  authenticated = false;
+  tabsPage = TabsPage;
+  collectionsPage = CollectionsPage;
+  profilePage = ProfilePage;
+  settingsPage = SettingsPage;
+  productsPage = ProductsPage;
   @ViewChild('nav') nav: NavController;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private menuCtrl: MenuController, private auth: AuthService) {
@@ -34,13 +41,13 @@ export class MyApp {
     return this.auth.isAuthenticated().subscribe(
       response => {
         console.log(response);
-        this.authenticated = true;
-        this.nav.setRoot(this.homePage);
+        this.auth.authenticated = true;
+        this.rootPage = TabsPage;
       },
       err => {
         console.log(err);
-        this.authenticated = false;
-        this.nav.setRoot(this.rootPage);
+        this.auth.authenticated = false;
+        this.rootPage = SignInPage;
       }
     );
   }
@@ -48,8 +55,8 @@ export class MyApp {
   onSignOut() {
     this.auth.signOut();
     this.menuCtrl.close();
-    this.authenticated = false;
-    this.nav.setRoot(this.rootPage);
+    this.auth.authenticated = false;
+    this.rootPage = SignInPage;
   }
 }
 

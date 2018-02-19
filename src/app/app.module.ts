@@ -11,13 +11,29 @@ import {AuthService} from "../services/auth";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {HomePage} from "../pages/home/home";
+import {TabsPage} from "../pages/tabs/tabs";
+import {SearchPage} from "../pages/search/search";
+import {CartListPage} from "../pages/cart-list/cart-list";
+import {CollectionsPage} from "../pages/collections/collections";
+import {ProductsPage} from "../pages/products/products";
+import {WishListPage} from "../pages/wish-list/wish-list";
+import {ProfilePage} from "../pages/profile/profile";
+import {SettingsPage} from "../pages/settings/settings";
 
 @NgModule({
   declarations: [
     MyApp,
     SignUpPage,
     SignInPage,
-    HomePage
+    HomePage,
+    TabsPage,
+    SearchPage,
+    CartListPage,
+    CollectionsPage,
+    ProductsPage,
+    WishListPage,
+    ProfilePage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +46,15 @@ import {HomePage} from "../pages/home/home";
     MyApp,
     SignUpPage,
     SignInPage,
-    HomePage
+    HomePage,
+    TabsPage,
+    SearchPage,
+    CartListPage,
+    CollectionsPage,
+    ProductsPage,
+    WishListPage,
+    ProfilePage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

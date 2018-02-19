@@ -3,10 +3,11 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) {
-  }
+
   authenticated = false;
   baseUrl = 'http://media.mw.metropolia.fi/wbma';
+  constructor(private http: HttpClient) {
+  }
 
   signUp(userName: string, password: string, email: string, fullName?: string) {
     const settings = {
@@ -17,7 +18,7 @@ export class AuthService {
       'password': password,
       'email': email,
       'full_name': fullName
-    }
+    };
     return this.http.post(this.baseUrl + '/users', body, settings);
   }
 
@@ -28,7 +29,7 @@ export class AuthService {
     const body = {
       'username': userName,
       'password': password
-    }
+    };
     return this.http.post(this.baseUrl + '/login', body, settings);
   }
 

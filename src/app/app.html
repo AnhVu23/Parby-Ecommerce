@@ -10,33 +10,66 @@
         ion-item
         icon-left
         (click)="onLoad(rootPage)"
-        *ngIf="!authenticated">
+        *ngIf="!this.auth.authenticated">
         <ion-icon name="log-in"></ion-icon>
           Sign In</button>
       <button
         ion-item
         icon-left
         (click)="onLoad(signUpPage)"
-        *ngIf="!authenticated">
+        *ngIf="!this.auth.authenticated">
         <ion-icon name="person"
         ></ion-icon>
         Sign Up</button>
       <button
         ion-item
         icon-left
-        (click)="onLoad(homePage)"
-        *ngIf="authenticated">
+        (click)="onLoad(tabsPage)"
+        *ngIf="this.auth.authenticated">
         <ion-icon name="home"
         ></ion-icon>
         Home</button>
       <button
         ion-item
         icon-left
+        (click)="onLoad(collectionsPage)"
+        *ngIf="this.auth.authenticated">
+        <ion-icon name="albums"
+        ></ion-icon>
+        Collections</button>
+      <button
+        ion-item
+        icon-left
+        (click)="onLoad(profilePage)"
+        *ngIf="this.auth.authenticated">
+        <ion-icon name="contact"
+        ></ion-icon>
+        Profile</button>
+      <button
+        ion-item
+        icon-left
+        (click)="onLoad(settingsPage)"
+        *ngIf="this.auth.authenticated">
+        <ion-icon name="settings"
+        ></ion-icon>
+        Settings</button>
+      <button
+        ion-item
+        icon-left
+        (click)="onLoad(productsPage)"
+        *ngIf="this.auth.authenticated">
+        <ion-icon name="contact"
+        ></ion-icon>
+        Products</button>
+      <button
+        ion-item
+        icon-left
         (click)="onSignOut()"
-        *ngIf="authenticated">
+        *ngIf="this.auth.authenticated">
         <ion-icon name="log-out"
         ></ion-icon>
         Sign Out</button>
+
     </ion-list>
   </ion-content>
 </ion-menu>
