@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {MediaService} from "../../services/media";
 
 /**
  * Generated class for the ProductsPage page.
@@ -13,13 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-products',
   templateUrl: 'products.html',
 })
-export class ProductsPage {
+export class ProductsPage implements OnInit{
+  tag = 'parby baby diaper_changing_pad';
+  mediaArray: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private mediaService: MediaService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductsPage');
+  ngOnInit() {
+    this.mediaService.getImageByTag(this.tag).subscribe(
+      response => {
+        console.log(response);
+        this.mediaArray = response;
+      }
+    );
   }
-
 }

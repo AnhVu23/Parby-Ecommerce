@@ -19,6 +19,7 @@ import {ProductsPage} from "../pages/products/products";
 import {WishListPage} from "../pages/wish-list/wish-list";
 import {ProfilePage} from "../pages/profile/profile";
 import {SettingsPage} from "../pages/settings/settings";
+import {MediaService} from "../services/media";
 
 @NgModule({
   declarations: [
@@ -30,10 +31,10 @@ import {SettingsPage} from "../pages/settings/settings";
     SearchPage,
     CartListPage,
     CollectionsPage,
-    ProductsPage,
     WishListPage,
     ProfilePage,
-    SettingsPage
+    SettingsPage,
+    ProductsPage
   ],
   imports: [
     BrowserModule,
@@ -60,6 +61,7 @@ import {SettingsPage} from "../pages/settings/settings";
     StatusBar,
     SplashScreen,
     AuthService,
+    MediaService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
