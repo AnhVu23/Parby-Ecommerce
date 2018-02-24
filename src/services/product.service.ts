@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
-export class MediaService {
+export class ProductService {
   baseUrl = 'http://media.mw.metropolia.fi/wbma';
 
   constructor(private http: HttpClient) {}
@@ -15,4 +15,7 @@ export class MediaService {
     };
     return this.http.get(this.baseUrl + '/tags/' + tag, settings);
   }
+
+
+
 }

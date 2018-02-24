@@ -4,6 +4,7 @@ import {WishListPage} from "../wish-list/wish-list";
 import {HomePage} from "../home/home";
 import {SearchPage} from "../search/search";
 import {CartListPage} from "../cart-list/cart-list";
+import {CollectionsPage} from "../collections/collections";
 
 @IonicPage()
 @Component({
@@ -11,8 +12,9 @@ import {CartListPage} from "../cart-list/cart-list";
   templateUrl: 'tabs.html',
 })
 export class TabsPage {
-  homePage = HomePage;
-  searchPage = SearchPage;
-  wishListPage = WishListPage;
-  cartListPage = CartListPage;
+  tab1Root = HomePage;
+  tab2Root = CollectionsPage;
+  tab3Root = SearchPage;
+  tab4Root = WishListPage;
+  tab5Root = CartListPage;
 }

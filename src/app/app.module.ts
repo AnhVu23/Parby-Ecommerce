@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {SignInPage} from "../pages/sign-in/sign-in";
-import {AuthService} from "../services/auth";
+import {AuthService} from "../services/auth.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {HomePage} from "../pages/home/home";
@@ -19,7 +19,8 @@ import {ProductsPage} from "../pages/products/products";
 import {WishListPage} from "../pages/wish-list/wish-list";
 import {ProfilePage} from "../pages/profile/profile";
 import {SettingsPage} from "../pages/settings/settings";
-import {MediaService} from "../services/media";
+import {ProductService} from "../services/product.service";
+import {CartService} from "../services/cart.service";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {MediaService} from "../services/media";
     StatusBar,
     SplashScreen,
     AuthService,
-    MediaService,
+    ProductService,
+    CartService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

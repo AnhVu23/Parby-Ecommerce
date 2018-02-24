@@ -32,14 +32,6 @@
       <button
         ion-item
         icon-left
-        (click)="onLoad(collectionsPage)"
-        *ngIf="this.auth.authenticated">
-        <ion-icon name="albums"
-        ></ion-icon>
-        Collections</button>
-      <button
-        ion-item
-        icon-left
         (click)="onLoad(profilePage)"
         *ngIf="this.auth.authenticated">
         <ion-icon name="contact"
