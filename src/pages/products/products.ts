@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import {ProductService} from "../../services/product.service";
 import {CartListPage} from "../cart-list/cart-list";
 import {CartService} from "../../services/cart.service";
+import {ReviewPage} from "../review/review";
 
 /**
  * Generated class for the ProductsPage page.
@@ -29,6 +30,7 @@ export class ProductsPage implements OnInit{
   productQuantity : string;
   description: string;
   segmentButton: string;
+  reviewPage = ReviewPage;
   @ViewChild('productSlides') productSlides: Slides;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private productService: ProductService, private cartService: CartService) {
@@ -72,5 +74,7 @@ export class ProductsPage implements OnInit{
     this.segmentButton = 'deliveryTime';
   }
 
-  onWriteReview() {}
+  onWriteReview() {
+    this.navCtrl.push(this.reviewPage);
+  }
 }
