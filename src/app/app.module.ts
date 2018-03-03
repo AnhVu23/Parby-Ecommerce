@@ -22,6 +22,9 @@ import {SettingsPage} from "../pages/settings/settings";
 import {ProductService} from "../services/product.service";
 import {CartService} from "../services/cart.service";
 import {ReviewPage} from "../pages/review/review";
+import {ProgressBarComponent} from "../components/progress-bar/progress-bar";
+import {RatingComponent} from "../components/rating/rating";
+import {ReviewService} from "../services/review";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import {ReviewPage} from "../pages/review/review";
     ProfilePage,
     SettingsPage,
     ProductsPage,
-    ReviewPage
+    ReviewPage,
+    ProgressBarComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ import {ReviewPage} from "../pages/review/review";
     AuthService,
     ProductService,
     CartService,
+    ReviewService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

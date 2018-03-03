@@ -11,6 +11,7 @@
 </ion-header>
 
 <ion-content padding>
+
   <div>
     <ion-slides pager="true" paginationType="fraction" #productSlides>
     <ion-slide *ngFor="let product of productsArray">
@@ -24,6 +25,7 @@
     </ion-slide>
     </ion-slides>
   </div>
+
   <div>
     <ion-list>
       <ion-item>
@@ -77,7 +79,25 @@
   <div>
     <h1>CUSTOMER REVIEWS</h1>
   </div>
+
+  <div>
+    <progress-bar></progress-bar>
+    <progress-bar></progress-bar>
+  </div>
   <button ion-button block outline (click)="onWriteReview()">WRITE REVIEW</button>
+  <br/>
+  <br/>
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let review of reviewArray">
+        <rating [rate]="review.rating"></rating>
+        <ion-img [src]="review.imagePath"></ion-img>
+        <ion-textarea [value]="review.commentContent"></ion-textarea>
+        <ion-label>{{review.userName}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+  </div>
 
 
 </ion-content>

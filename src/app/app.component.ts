@@ -39,6 +39,7 @@ export class MyApp {
     return this.auth.isAuthenticated().subscribe(
       response => {
         console.log(response);
+        this.auth.getCurrentUserName();
         this.auth.authenticated = true;
         this.rootPage = TabsPage;
       },

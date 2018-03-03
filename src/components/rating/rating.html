@@ -1,0 +1,7 @@
+<ion-row>
+    <ion-item class="col" no-lines *ngFor="let element of range; index as i">
+      <ion-icon *ngIf="!isClicked[i]" name="star-outline" (click)="onRating(i)"></ion-icon>
+      <ion-icon *ngIf="isClicked[i]" name="star" (click)="onUpdateRating(i)"></ion-icon>
+    </ion-item>
+</ion-row>
+

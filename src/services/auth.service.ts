@@ -1,10 +1,11 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 
 @Injectable()
 export class AuthService {
 
   authenticated = false;
+  userName: string;
   baseUrl = 'http://media.mw.metropolia.fi/wbma';
   constructor(private http: HttpClient) {
   }
@@ -47,6 +48,23 @@ export class AuthService {
       headers: new HttpHeaders().set('x-access-token', token)
     };
     return this.http.get(this.baseUrl + '/users/user', settings);
+  }
+
+  getCurrentUserName() {
+    this.isAuthenticated().subscribe(
+      data => {
+        this.userName = data['username'];
+        console.log(this.userName);
+      }
+    );
+  }
+
+  getUserName(userId: number) {
+    const token = localStorage.getItem('token');
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token)
+    };
+    return this.http.get(this.baseUrl + '/users/' + userId, settings);
   }
 
 }
