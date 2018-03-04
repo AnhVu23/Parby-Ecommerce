@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {WishListService} from "../../services/wish-list.service";
 
 /**
  * Generated class for the WishListPage page.
@@ -15,11 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WishListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private wishListService: WishListService) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WishListPage');
-  }
-
 }

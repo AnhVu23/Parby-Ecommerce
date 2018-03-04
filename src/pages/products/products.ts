@@ -6,6 +6,7 @@ import {CartService} from "../../services/cart.service";
 import {ReviewPage} from "../review/review";
 import {AuthService} from "../../services/auth.service";
 import {Review} from "../../model/review.model";
+import {WishListService} from "../../services/wish-list.service";
 
 
 @IonicPage()
@@ -34,11 +35,13 @@ export class ProductsPage implements OnInit{
   reviewCommentContent: string[] = [];
   reviewRate: number[] = [];
   reviewPage = ReviewPage;
+
+  isLiked = false;
   @ViewChild('productSlides') productSlides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private productService: ProductService, private cartService: CartService,
-              private auth: AuthService) {
+              private auth: AuthService, private wishListService: WishListService) {
   }
 
   ngOnInit() {
@@ -145,5 +148,14 @@ export class ProductsPage implements OnInit{
         this.reviewCommentContent[i], this.reviewImagePath[i], +this.reviewRate[i]));
     }
     console.log(this.reviewArray);
+  }
+
+  onChangeWishList() {
+    this.isLiked = !this.isLiked;
+    if(this.isLiked) {
+      this.wishListService.addToWishList(this.productImagePath, this.productName, this.productPrice, this.productSize, this.productColor, this.productQuantity);
+    } else {
+      this.wishListService.removeFromWishList(this.productName);
+    }
   }
 }

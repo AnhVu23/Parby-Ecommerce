@@ -29,6 +29,7 @@ import {RatingShowComponent} from "../components/rating-show/rating-show";
 import {Payment_1Page} from "../pages/payment-1/payment-1";
 import {Payment_2Page} from "../pages/payment-2/payment-2";
 import {ConfirmationPage} from "../pages/confirmation/confirmation";
+import {WishListService} from "../services/wish-list.service";
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import {ConfirmationPage} from "../pages/confirmation/confirmation";
     ProductService,
     CartService,
     ReviewService,
+    WishListService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
