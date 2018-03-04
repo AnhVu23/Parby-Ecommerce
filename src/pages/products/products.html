@@ -87,17 +87,26 @@
   <button ion-button block outline (click)="onWriteReview()">WRITE REVIEW</button>
   <br/>
   <br/>
-  <div>
-    <ion-list>
-      <ion-item *ngFor="let review of reviewArray">
-        <rating [rate]="review.rating"></rating>
-        <ion-img [src]="review.imagePath"></ion-img>
-        <ion-textarea [value]="review.commentContent"></ion-textarea>
-        <ion-label>{{review.userName}}</ion-label>
-      </ion-item>
-    </ion-list>
+  <ion-grid *ngFor="let review of reviewArray">
+    <ion-row>
+      <ion-col col-6>
+        <ion-row>
+          <rating-show [rate]="review.rating"></rating-show>
+        </ion-row>
+        <ion-row>
+          <ion-textarea [value]="review.commentContent"></ion-textarea>
+        </ion-row>
+        <ion-row>
+          <ion-label class="label-username">{{review.userName}}</ion-label>
+        </ion-row>
+      </ion-col>
+      <ion-col col-6>
+          <ion-img class="review-image"[src]="review.imagePath"></ion-img>
+      </ion-col>
+    </ion-row>
 
-  </div>
+
+  </ion-grid>
 
 
 </ion-content>

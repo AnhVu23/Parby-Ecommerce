@@ -25,6 +25,10 @@ import {ReviewPage} from "../pages/review/review";
 import {ProgressBarComponent} from "../components/progress-bar/progress-bar";
 import {RatingComponent} from "../components/rating/rating";
 import {ReviewService} from "../services/review";
+import {RatingShowComponent} from "../components/rating-show/rating-show";
+import {Payment_1Page} from "../pages/payment-1/payment-1";
+import {Payment_2Page} from "../pages/payment-2/payment-2";
+import {ConfirmationPage} from "../pages/confirmation/confirmation";
 
 @NgModule({
   declarations: [
@@ -41,8 +45,12 @@ import {ReviewService} from "../services/review";
     SettingsPage,
     ProductsPage,
     ReviewPage,
+    Payment_1Page,
+    Payment_2Page,
+    ConfirmationPage,
     ProgressBarComponent,
-    RatingComponent
+    RatingComponent,
+    RatingShowComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,10 @@ import {ReviewService} from "../services/review";
     WishListPage,
     ProfilePage,
     SettingsPage,
-    ReviewPage
+    ReviewPage,
+    Payment_1Page,
+    Payment_2Page,
+    ConfirmationPage
   ],
   providers: [
     StatusBar,

@@ -11,10 +11,10 @@
 
 <ion-content padding>
   <div>
-    <rating [rate]="rate" (checkedChange)="onRateChange($event)"></rating>
-    <p>{{rate}}</p>
+    <ion-row>
+      <rating [rate]="rate" (checkedChange)="onRateChange($event)"></rating>
+    </ion-row>
   </div>
-
   <div>
     <form (ngSubmit)="onPostReview(f)" #f="ngForm">
       <ion-row>

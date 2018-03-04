@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { ProgressBarComponent } from './progress-bar/progress-bar';
 import { RatingComponent } from './rating/rating';
+import { RatingShowComponent } from './rating-show/rating-show';
 @NgModule({
 	declarations: [ProgressBarComponent,
-    RatingComponent],
+    RatingComponent,
+    RatingShowComponent],
 	imports: [],
 	exports: [ProgressBarComponent,
-    RatingComponent]
+    RatingComponent,
+    RatingShowComponent]
 })
 export class ComponentsModule {}

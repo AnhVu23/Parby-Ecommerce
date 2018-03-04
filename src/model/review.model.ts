@@ -1,5 +1,5 @@
 export class Review {
-  constructor(public userName: string, rating: number,
-              public commentContent: string, public imagePath?: string) {
+  constructor(public userName: string,
+              public commentContent: string, public imagePath: string, public rating: number) {
   }
 }

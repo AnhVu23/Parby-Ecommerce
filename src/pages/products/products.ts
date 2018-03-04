@@ -4,15 +4,9 @@ import {ProductService} from "../../services/product.service";
 import {CartListPage} from "../cart-list/cart-list";
 import {CartService} from "../../services/cart.service";
 import {ReviewPage} from "../review/review";
-import {Review} from "../../model/review.model";
 import {AuthService} from "../../services/auth.service";
+import {Review} from "../../model/review.model";
 
-/**
- * Generated class for the ProductsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,17 +14,16 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: 'products.html',
 })
 export class ProductsPage implements OnInit{
-  cartListPage = CartListPage;
   tag = 'parby baby diaper_changing_pad';
   productsArray: any;
   uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads';
 
   productName : string;
-  productPrice : string;
+  productPrice : number;
   productImagePath : string;
   productColor: string;
   productSize: string;
-  productQuantity : string;
+  productQuantity : number;
   description: string;
   segmentButton: string;
 
@@ -51,7 +44,7 @@ export class ProductsPage implements OnInit{
   ngOnInit() {
     this.onGetProduct();
     this.onGetReview();
-    setTimeout(() => this.addReview(), 1000);
+    setTimeout(() => this.addReview(), 2000);
   }
 
   onPrevSlide() {
@@ -63,8 +56,7 @@ export class ProductsPage implements OnInit{
   }
 
   onAddToCart() {
-    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice, this.productSize, this.productColor, this.productQuantity);
-    this.navCtrl.push(this.cartListPage);
+    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * this.productQuantity, this.productSize, this.productColor, this.productQuantity);
   }
 
   onSelectProductDetails() {
@@ -89,8 +81,8 @@ export class ProductsPage implements OnInit{
       response => {
         console.log(response);
         this.productsArray = response;
-        this.productImagePath = 'this.uploadUrl' + '/' + this.productsArray[0].filename;
-        this.productPrice = this.productsArray[0].title;
+        this.productImagePath = this.uploadUrl + '/' + this.productsArray[0].filename;
+        this.productPrice = +this.productsArray[0].title;
         this.description = this.productsArray[0].description;
       },
       err => {
@@ -117,7 +109,7 @@ export class ProductsPage implements OnInit{
           const fileId = element['file_id'];
           this.productService.getFileByFileId(fileId).subscribe(
             response => {
-              const imagePath = 'this.uploadUrl' + '/' + response['filename'];
+              const imagePath = this.uploadUrl + '/' + response['filename'];
               this.reviewImagePath.push(imagePath);
             }, err => {
               console.log(err);
@@ -134,6 +126,7 @@ export class ProductsPage implements OnInit{
           this.productService.getRatingbyFileId(fileId).subscribe(
             response => {
               const rating = +response[0]['rating'];
+              console.log(rating);
               this.reviewRate.push(rating);
             }, err => {
               console.log(err);
@@ -147,9 +140,9 @@ export class ProductsPage implements OnInit{
   }
 
   addReview() {
-    for(let i = 0; i < this.reviewUserName.length; i++) {
-      this.reviewArray.push(new Review(this.reviewUserName[0], this.reviewRate[0],
-        this.reviewCommentContent[0], this.reviewImagePath[0]));
+    for(let i = 0; i < this.reviewRate.length; i++) {
+      this.reviewArray.push(new Review(this.reviewUserName[i],
+        this.reviewCommentContent[i], this.reviewImagePath[i], +this.reviewRate[i]));
     }
     console.log(this.reviewArray);
   }

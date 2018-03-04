@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {CartService} from "../../services/cart.service";
+import {Payment_1Page} from "../payment-1/payment-1";
 
 /**
  * Generated class for the CartListPage page.
@@ -13,13 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-cart-list',
   templateUrl: 'cart-list.html',
 })
-export class CartListPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class CartListPage implements OnInit{
+  payment1Page = Payment_1Page
+  numberOfItems: number;
+  totalCost: number;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private cartService: CartService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CartListPage');
+  ngOnInit() {
+    this.numberOfItems = this.cartService.productsArray.length;
+    this.totalCost = this.cartService.calculatePrice();
   }
 
+  onCheckOut() {
+    this.navCtrl.push(this.payment1Page, {
+      'cost': this.totalCost
+    });
+  }
 }

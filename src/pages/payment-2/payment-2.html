@@ -1,0 +1,32 @@
+<!--
+  Generated template for the Payment_2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>payment-2</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="onPay(f)" #f="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6><h1>Shipping Details</h1></ion-col>
+        <ion-col><h3>Step 2 of 2</h3></ion-col>
+      </ion-row>
+      <ion-row><ion-input type="text" placeholder="Credit card number" name="ccNumber" ngModel required minlength="12"></ion-input></ion-row>
+      <ion-row>
+        <ion-col col-6><ion-input type="text" placeholder="MM/YY" name="expiryDate" ngModel required></ion-input></ion-col>
+        <ion-col col-6><ion-input type="text" placeholder="CCV" name="secretNum" ngModel required></ion-input></ion-col>
+      </ion-row>
+      <ion-row></ion-row>
+      <ion-row><button ion-button type="submit" [disabled]="!f.valid">PAY NOW</button></ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
