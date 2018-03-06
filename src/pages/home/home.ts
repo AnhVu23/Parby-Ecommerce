@@ -5,6 +5,7 @@ import {ProductService} from "../../services/product.service";
 import {map} from "rxjs/operators";
 import {WishListService} from "../../services/wish-list.service";
 import {CollectionsPage} from "../collections/collections";
+import {ProductsPage} from "../products/products";
 
 
 @IonicPage()
@@ -14,6 +15,8 @@ import {CollectionsPage} from "../collections/collections";
 })
 export class HomePage implements OnInit{
   uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads';
+  productPage = ProductsPage;
+  collectionPage = CollectionsPage;
 
   searchInput: string;
   babyProduct: ProductShowModel[] = [];
@@ -111,7 +114,28 @@ export class HomePage implements OnInit{
     }
   }
 
-  onNagivateToCollection(collection: string) {
-    this.navCtrl.push(CollectionsPage);
+  onNagivateToCollection(tag: string) {
+    if(tag === this.babyTag) {
+      this.navCtrl.push(this.collectionPage, {
+        title: 'Baby',
+        tag: tag
+      });
+    } else if(tag === this.girlTag) {
+      this.navCtrl.push(this.collectionPage, {
+        title: 'Girl',
+        tag: tag
+      });
+    } else if(tag === this.boyTag) {
+      this.navCtrl.push(this.collectionPage, {
+        title: 'Boy',
+        tag: tag
+      });
+    }
+  }
+
+  onNagivateToProduct(product: ProductShowModel) {
+    this.navCtrl.push(this.productPage, {
+      product: product
+    })
   }
 }

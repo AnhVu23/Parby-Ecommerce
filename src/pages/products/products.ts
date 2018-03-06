@@ -19,7 +19,7 @@ export class ProductsPage implements OnInit{
   productsArray: any;
   uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads';
 
-  productName : string;
+  productName : string = 'example';
   productPrice : number;
   productImagePath : string;
   productColor: string;
@@ -80,8 +80,12 @@ export class ProductsPage implements OnInit{
   }
 
   onGetProduct() {
+    const product = this.navParams.get('product');
+    /*this.productName = product.name;
+    this.productImagePath = product.imagePath;
+    this.productPrice = product.price;
     this.segmentButton = 'productDetails';
-    this.description = 'Diaper Changing Pad';
+    this.description = 'Diaper Changing Pad';*/
     this.productService.getImageByTag(this.tag).subscribe(
       response => {
         this.productsArray = response;

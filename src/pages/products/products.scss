@@ -1,4 +1,12 @@
 page-products {
+  .review-image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    min-height: 160px;
+    height: auto;
+  }
+
   .label-username {
     font-weight: bold;
   }

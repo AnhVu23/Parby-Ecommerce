@@ -7,12 +7,51 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>collections</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>{{pageName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-searchbar [(ngModel)]="searchInput" showCancelButton="true"
+                 placeholder="What are you looking for?"
+                 (ionInput)="onInput($event)"
+                 (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-label>Shop For Baby</ion-label>
+      </ion-col>
+      <ion-col col-6 text-right>
+        <button ion-button clear (click)="onNagivateToCollection(babyTag)">See All</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 *ngFor="let product of productArray; index as i">
+        <a class="href" (click)="onNagivateToProduct(product)">
+        <ion-row>
+          <img *ngIf="ready" class="product-image" [src]="product.imagePath">
+          <div class="right-top">
+            <button clear ion-button (click)="onChangeWishList(i)">
+              <ion-icon [name]="product.isLiked ? 'heart' : 'heart-outline'"></ion-icon>
+            </button>
+          </div>
+        </ion-row>
+        <ion-row>
+          <p *ngIf="ready">{{product.name}}</p>
+        </ion-row>
+        <ion-row>
+          <h1 *ngIf="ready">{{product.price}}</h1>
+        </ion-row>
+      </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
