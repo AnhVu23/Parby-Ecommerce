@@ -7,12 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>search</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>Search</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-searchbar [(ngModel)]="searchInput"
+                 placeholder="What are you looking for?"
+                [formControl]="searchControl"
+                (ionInput)="onSearchInput()">
+  </ion-searchbar>
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-list>
+    <button ion-item (click)="onGetResult(item)" *ngFor="let item of searchResult">
+      {{item.title}}
+    </button>
+  </ion-list>
 </ion-content>

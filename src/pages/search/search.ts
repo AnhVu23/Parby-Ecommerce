@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {SearchService} from "../../services/search.service";
+import {FormControl} from "@angular/forms";
+import "rxjs/add/operator/debounceTime";
+import {ProductService} from "../../services/product.service";
 
 /**
  * Generated class for the SearchPage page.
@@ -13,13 +17,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-search',
   templateUrl: 'search.html',
 })
-export class SearchPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class SearchPage implements OnInit{
+  searchInput = '';
+  searchControl: FormControl;
+  searchResult: any;
+  searching = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private searchService: SearchService, public productService: ProductService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+  ngOnInit() {
+    this.searchControl = new FormControl();
+    this.setFilteredItem();
+    this.searchControl.valueChanges.debounceTime(1000).subscribe(
+      search => {
+        this.searching = false;
+        this.setFilteredItem();
+      }
+    );
   }
 
+  onSearchInput() {
+    this.searching = true;
+  }
+
+  setFilteredItem() {
+    this.searchResult = this.searchService.filterItems(this.searchInput);
+  }
+
+  onGetResult(item: any) {
+    console.log(item);
+  }
 }

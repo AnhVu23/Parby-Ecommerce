@@ -81,6 +81,7 @@ export class ProductsPage implements OnInit{
 
   onGetProduct() {
     const product = this.navParams.get('product');
+    //Main
     /*this.productName = product.name;
     this.productImagePath = product.imagePath;
     this.productPrice = product.price;
@@ -89,6 +90,7 @@ export class ProductsPage implements OnInit{
     this.productService.getImageByTag(this.tag).subscribe(
       response => {
         this.productsArray = response;
+        //Should be removed
         this.productImagePath = this.uploadUrl + '/' + this.productsArray[0].filename;
         this.productPrice = +this.productsArray[0].title;
         this.productName = this.productsArray[0].description;
