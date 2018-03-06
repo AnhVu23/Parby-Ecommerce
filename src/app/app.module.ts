@@ -30,6 +30,7 @@ import {Payment_1Page} from "../pages/payment-1/payment-1";
 import {Payment_2Page} from "../pages/payment-2/payment-2";
 import {ConfirmationPage} from "../pages/confirmation/confirmation";
 import {WishListService} from "../services/wish-list.service";
+import {SearchService} from "../services/search.service";
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import {WishListService} from "../services/wish-list.service";
     CartService,
     ReviewService,
     WishListService,
+    SearchService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

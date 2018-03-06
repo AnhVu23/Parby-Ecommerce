@@ -24,6 +24,7 @@ export class AuthService {
   }
 
   signIn(userName: string, password: string) {
+    this.userName = userName;
     const settings = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };

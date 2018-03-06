@@ -1,15 +1,15 @@
 
 import {Injectable} from "@angular/core";
-import {Product} from "../model/product.model";
+import {ProductShowModel} from "../model/product-show.model";
 
 @Injectable()
 export class WishListService {
-  wishListArray: Product[] = [];
+  wishListArray: ProductShowModel[] = [];
   constructor() {
   }
 
-  addToWishList(imagePath: string, name: string, price: number, size: string, color: string, quantity: number) {
-    this.wishListArray.push(new Product(imagePath, name, price, size, color, quantity));
+  addToWishList(name: string, imagePath: string, price: number, tag: string) {
+    this.wishListArray.push(new ProductShowModel(name, imagePath, price, tag, true));
   }
 
   removeFromWishList(productName: string) {

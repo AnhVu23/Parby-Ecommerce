@@ -19,25 +19,23 @@ export class ProductService {
   }
 
   getFileByFileId(fileId: number) {
-    const settings = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    };
     return this.http.get(this.baseUrl + '/media/' + fileId);
   }
 
   getRatingbyFileId(fileId: number) {
-    const settings = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    };
     return this.http.get(this.baseUrl + '/ratings/file/' + fileId);
   }
 
   getCommentByFileId(fileId: number) {
-    const settings = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    };
     return this.http.get(this.baseUrl + '/comments/file/' + fileId);
   }
 
+  calculateOverallRate(rateArray: number[]) {
+    let overallRate = 0;
+    for(let rate of rateArray) {
+      overallRate += rate;
+    }
+    return +(overallRate / rateArray.length).toFixed(2);
+  }
 
 }

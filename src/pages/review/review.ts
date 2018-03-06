@@ -6,12 +6,6 @@ import {ProductsPage} from "../products/products";
 import {ReviewService} from "../../services/review";
 import {NgForm} from "@angular/forms";
 
-/**
- * Generated class for the ReviewPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

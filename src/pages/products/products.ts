@@ -36,6 +36,8 @@ export class ProductsPage implements OnInit{
   reviewRate: number[] = [];
   reviewPage = ReviewPage;
 
+  overallRate = -1;
+  roundedRate = -1;
   isLiked = false;
   @ViewChild('productSlides') productSlides: Slides;
 
@@ -79,14 +81,13 @@ export class ProductsPage implements OnInit{
 
   onGetProduct() {
     this.segmentButton = 'productDetails';
-    this.productName = 'Diaper Changing Pad';
+    this.description = 'Diaper Changing Pad';
     this.productService.getImageByTag(this.tag).subscribe(
       response => {
-        console.log(response);
         this.productsArray = response;
         this.productImagePath = this.uploadUrl + '/' + this.productsArray[0].filename;
         this.productPrice = +this.productsArray[0].title;
-        this.description = this.productsArray[0].description;
+        this.productName = this.productsArray[0].description;
       },
       err => {
         console.log('Products Page: ' + err);
@@ -129,7 +130,6 @@ export class ProductsPage implements OnInit{
           this.productService.getRatingbyFileId(fileId).subscribe(
             response => {
               const rating = +response[0]['rating'];
-              console.log(rating);
               this.reviewRate.push(rating);
             }, err => {
               console.log(err);
@@ -147,13 +147,14 @@ export class ProductsPage implements OnInit{
       this.reviewArray.push(new Review(this.reviewUserName[i],
         this.reviewCommentContent[i], this.reviewImagePath[i], +this.reviewRate[i]));
     }
-    console.log(this.reviewArray);
+    this.overallRate = this.productService.calculateOverallRate(this.reviewRate);
+    this.roundedRate = Math.floor(this.overallRate);
   }
 
   onChangeWishList() {
     this.isLiked = !this.isLiked;
     if(this.isLiked) {
-      this.wishListService.addToWishList(this.productImagePath, this.productName, this.productPrice, this.productSize, this.productColor, this.productQuantity);
+      this.wishListService.addToWishList(this.productName, this.productImagePath, this.productPrice, this.tag);
     } else {
       this.wishListService.removeFromWishList(this.productName);
     }

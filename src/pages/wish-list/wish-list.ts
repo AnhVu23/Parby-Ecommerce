@@ -15,8 +15,12 @@ import {WishListService} from "../../services/wish-list.service";
   templateUrl: 'wish-list.html',
 })
 export class WishListPage {
-
+  isLiked = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private wishListService: WishListService) {
+  }
+
+  onChangeWishList(i: number) {
+    this.wishListService.wishListArray.splice(i, 1);
   }
 }
