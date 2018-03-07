@@ -31,7 +31,7 @@
         <ion-row>
           <img *ngIf="ready" class="product-image" [src]="product.imagePath">
           <div class="right-top">
-            <button clear ion-button (click)="onChangeWishList(i)">
+            <button clear ion-button (click)="onChangeWishList($event, i)">
               <ion-icon [name]="product.isLiked ? 'heart' : 'heart-outline'"></ion-icon>
             </button>
           </div>

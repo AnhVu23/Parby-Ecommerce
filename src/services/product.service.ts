@@ -38,4 +38,14 @@ export class ProductService {
     return +(overallRate / rateArray.length).toFixed(2);
   }
 
+  renameTag(parentTag, childTag) {
+    let newChildTag = '';
+    const childTagSplit = childTag.toLowerCase().split(" ");
+    newChildTag = childTagSplit[0];
+    for(let i = 1; i < childTagSplit.length; i++) {
+      newChildTag = newChildTag + childTagSplit[i].charAt(0).toUpperCase() + childTagSplit[i].substr(1);
+    }
+    console.log(newChildTag);
+    return parentTag + ' ' + newChildTag;
+  }
 }

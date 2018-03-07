@@ -50,7 +50,7 @@ export class CollectionsPage implements OnInit{
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
-          const tag = this.tag + ' ' + name;
+          const tag = this.productService.renameTag(this.tag, name);
           this.productArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
         this.ready = true;
@@ -58,7 +58,7 @@ export class CollectionsPage implements OnInit{
     );
   }
 
-  onChangeWishList(index: number) {
+  onChangeWishList(event: any, index: number) {
       this.productArray[index].isLiked = true;
       if(this.productArray[index].isLiked) {
         this.wishListService.addToWishList(this.productArray[index].name, this.productArray[index].imagePath, this.productArray[index].price, this.productArray[index].tag);

@@ -20,11 +20,11 @@ export class HomePage implements OnInit{
 
   searchInput: string;
   babyProduct: ProductShowModel[] = [];
-  babyTag = 'parby baby';
+  babyTag = 'parby-e baby';
   girlProduct: ProductShowModel[] = [];
-  girlTag = 'parby girl';
+  girlTag = 'parby-e girl';
   boyProduct: ProductShowModel[] = [];
-  boyTag = 'parby boy';
+  boyTag = 'parby-e boy';
   babyReady = false;
   girlReady = false;
   boyReady = false;
@@ -47,7 +47,7 @@ export class HomePage implements OnInit{
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
-          const tag = this.babyTag + ' ' + name;
+          const tag = this.productService.renameTag(this.babyTag, name);
           this.babyProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
         this.babyReady = true;
@@ -64,7 +64,7 @@ export class HomePage implements OnInit{
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
-          const tag = this.babyTag + ' ' + name;
+          const tag = this.productService.renameTag(this.boyTag, name);
           this.boyProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
         this.boyReady = true;
@@ -81,7 +81,7 @@ export class HomePage implements OnInit{
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
-          const tag = this.babyTag + ' ' + name;
+          const tag = this.productService.renameTag(this.girlTag, name);
           this.girlProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
         this.girlReady = true;
@@ -89,7 +89,8 @@ export class HomePage implements OnInit{
     );
   }
 
-  onChangeWishList(index: number, tag: string) {
+  onChangeWishList(event: any, index: number, tag: string) {
+    event.stopPropagation();
     if (tag === this.babyTag) {
       this.babyProduct[index].isLiked = true;
       if(this.babyProduct[index].isLiked) {
