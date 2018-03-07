@@ -4,6 +4,8 @@ import {SearchService} from "../../services/search.service";
 import {FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
 import {ProductService} from "../../services/product.service";
+import {ProductShowModel} from "../../model/product-show.model";
+import {ProductsPage} from "../products/products";
 
 /**
  * Generated class for the SearchPage page.
@@ -22,6 +24,9 @@ export class SearchPage implements OnInit{
   searchControl: FormControl;
   searchResult: any;
   searching = false;
+  defaultTag = 'parby-e';
+  uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads';
+  product: ProductShowModel;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private searchService: SearchService, public productService: ProductService) {
   }
@@ -46,6 +51,21 @@ export class SearchPage implements OnInit{
   }
 
   onGetResult(item: any) {
-    console.log(item);
+    const tag = this.productService.renameTag(this.defaultTag, item.title);
+    this.productService.getImageByTag(tag).subscribe(
+      response => {
+        console.log(response);
+        const temp = response[0];
+        const name = temp['description'];
+        console.log(name);
+        const price = temp['title'];
+        const imagePath = this.uploadUrl + '/' + temp['filename'];
+        this.product = new ProductShowModel(name, imagePath, price, tag, false);
+        this.navCtrl.push(ProductsPage, {
+          product: this.product
+        })
+      }
+    );
+    console.log(tag);
   }
 }

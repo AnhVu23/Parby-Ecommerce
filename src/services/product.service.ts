@@ -45,7 +45,6 @@ export class ProductService {
     for(let i = 1; i < childTagSplit.length; i++) {
       newChildTag = newChildTag + childTagSplit[i].charAt(0).toUpperCase() + childTagSplit[i].substr(1);
     }
-    console.log(newChildTag);
     return parentTag + ' ' + newChildTag;
   }
 }

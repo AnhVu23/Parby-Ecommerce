@@ -19,7 +19,6 @@ export class MyApp {
   tabsPage = TabsPage;
   profilePage = ProfilePage;
   settingsPage = SettingsPage;
-  productsPage = ProductsPage;
   @ViewChild('nav') nav: NavController;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private menuCtrl: MenuController, private auth: AuthService) {

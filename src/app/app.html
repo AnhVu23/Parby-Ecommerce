@@ -48,14 +48,6 @@
       <button
         ion-item
         icon-left
-        (click)="onLoad(productsPage)"
-        *ngIf="this.auth.authenticated">
-        <ion-icon name="contact"
-        ></ion-icon>
-        Products</button>
-      <button
-        ion-item
-        icon-left
         (click)="onSignOut()"
         *ngIf="this.auth.authenticated">
         <ion-icon name="log-out"

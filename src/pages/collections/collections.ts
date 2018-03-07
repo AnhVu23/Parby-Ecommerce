@@ -59,6 +59,7 @@ export class CollectionsPage implements OnInit{
   }
 
   onChangeWishList(event: any, index: number) {
+    event.stopPropagation();
       this.productArray[index].isLiked = true;
       if(this.productArray[index].isLiked) {
         this.wishListService.addToWishList(this.productArray[index].name, this.productArray[index].imagePath, this.productArray[index].price, this.productArray[index].tag);

@@ -7,6 +7,7 @@ import {ReviewPage} from "../review/review";
 import {AuthService} from "../../services/auth.service";
 import {Review} from "../../model/review.model";
 import {WishListService} from "../../services/wish-list.service";
+import {NgForm} from "@angular/forms";
 
 
 @IonicPage()
@@ -22,9 +23,6 @@ export class ProductsPage implements OnInit{
   productName : string = 'example';
   productPrice : number;
   productImagePath : string;
-  productColor: string;
-  productSize: string;
-  productQuantity : number;
   description: string;
   segmentButton: string;
 
@@ -36,8 +34,8 @@ export class ProductsPage implements OnInit{
   reviewRate: number[] = [];
   reviewPage = ReviewPage;
 
-  overallRate = -1;
-  roundedRate = -1;
+  overallRate = 0;
+  roundedRate = 0;
   isLiked = false;
   @ViewChild('productSlides') productSlides: Slides;
 
@@ -60,8 +58,9 @@ export class ProductsPage implements OnInit{
     this.productSlides.slideNext();
   }
 
-  onAddToCart() {
-    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * this.productQuantity, this.productSize, this.productColor, this.productQuantity);
+  onAddToCart(form: NgForm) {
+    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * form.value.productQuantity,
+      form.value.productSize, form.value.productColor, form.value.productQuantity);
   }
 
   onSelectProductDetails() {
@@ -149,8 +148,10 @@ export class ProductsPage implements OnInit{
       this.reviewArray.push(new Review(this.reviewUserName[i],
         this.reviewCommentContent[i], this.reviewImagePath[i], +this.reviewRate[i]));
     }
-    this.overallRate = this.productService.calculateOverallRate(this.reviewRate);
-    this.roundedRate = Math.floor(this.overallRate);
+    if(this.reviewRate.length > 0) {
+      this.overallRate = this.productService.calculateOverallRate(this.reviewRate);
+      this.roundedRate = Math.floor(this.overallRate);
+    }
   }
 
   onChangeWishList() {
