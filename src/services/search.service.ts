@@ -3,18 +3,30 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class SearchService {
   searchResultArray = [
-    {title: 'Diaper Changing Pad' },
-    {title: 'Whale Pijama'},
-    {title: 'Nike White Shoes'},
-    {title: 'Adidas Black Sportwear'},
-    {title: 'Elephant Pijama'},
-    {title: 'Anchor Pijama Collection'},
-    {title: 'Dream T Shirt'},
-    {title: 'Adidas Colorful Sportwear'},
-    {title: 'Rabbit Dress'},
-    {title: 'Love Pijama'},
-    {title: 'Nike Pink Shoes'},
-    {title: 'Love Dad Pijama'}
+    {title: 'Diaper Changing Pad',
+    category: 'baby'},
+    {title: 'Whale Pijama',
+    category: 'baby'},
+    {title: 'Nike White Shoes',
+    category: 'baby'},
+    {title: 'Adidas Black Sportwear',
+      category: 'boy'},
+    {title: 'Elephant Pijama',
+      category: 'boy'},
+    {title: 'Anchor Pijama Collection',
+      category: 'boy'},
+    {title: 'Dream T Shirt',
+      category: 'boy'},
+    {title: 'Adidas Colorful Sportwear',
+      category: 'girl'},
+    {title: 'Rabbit Dress',
+      category: 'girl'},
+    {title: 'Love Pijama',
+      category: 'girl'},
+    {title: 'Nike Pink Shoes',
+      category: 'girl'},
+    {title: 'Love Dad Pijama',
+      category: 'girl'}
     ];
 
   constructor() {}

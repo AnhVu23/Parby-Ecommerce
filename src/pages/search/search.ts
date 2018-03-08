@@ -51,7 +51,7 @@ export class SearchPage implements OnInit{
   }
 
   onGetResult(item: any) {
-    const tag = this.productService.renameTag(this.defaultTag, item.title);
+    const tag = this.productService.renameTag(this.defaultTag + ' ' + item.category, item.title);
     this.productService.getImageByTag(tag).subscribe(
       response => {
         console.log(response);

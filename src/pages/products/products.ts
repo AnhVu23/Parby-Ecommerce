@@ -8,6 +8,7 @@ import {AuthService} from "../../services/auth.service";
 import {Review} from "../../model/review.model";
 import {WishListService} from "../../services/wish-list.service";
 import {NgForm} from "@angular/forms";
+import {ProductShowModel} from "../../model/product-show.model";
 
 
 @IonicPage()
@@ -74,7 +75,7 @@ export class ProductsPage implements OnInit{
   onWriteReview() {
     this.navCtrl.push(this.reviewPage, {
       'tag': this.reviewTag,
-      'productName': this.productName
+      'product': new ProductShowModel(this.productName, this.productImagePath, this.productPrice, this.tag, false)
     });
   }
 
@@ -148,6 +149,7 @@ export class ProductsPage implements OnInit{
       this.reviewArray.push(new Review(this.reviewUserName[i],
         this.reviewCommentContent[i], this.reviewImagePath[i], +this.reviewRate[i]));
     }
+    console.log(this.reviewImagePath);
     if(this.reviewRate.length > 0) {
       this.overallRate = this.productService.calculateOverallRate(this.reviewRate);
       this.roundedRate = Math.floor(this.overallRate);

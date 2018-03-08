@@ -56,6 +56,7 @@ export class ReviewPage implements OnInit {
   }
 
   onPostReview(form: NgForm) {
+    const product = this.navParams.get('product');
     const loading = this.loadingCtrl.create({
       content: 'Posting Review ...'
     });
@@ -79,7 +80,9 @@ export class ReviewPage implements OnInit {
         data => {
           loading.dismiss();
           alert('Review was posted');
-          this.navCtrl.setRoot(this.productsPage);
+          this.navCtrl.setRoot(this.productsPage, {
+            'product': product
+          });
           console.log(data);
         }, err => {
           console.log(err);
