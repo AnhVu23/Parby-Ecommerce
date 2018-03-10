@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams, Slides} from 'ionic-angular';
 import {ProductService} from "../../services/product.service";
 import {CartListPage} from "../cart-list/cart-list";
 import {CartService} from "../../services/cart.service";
@@ -9,6 +9,7 @@ import {Review} from "../../model/review.model";
 import {WishListService} from "../../services/wish-list.service";
 import {NgForm} from "@angular/forms";
 import {ProductShowModel} from "../../model/product-show.model";
+import {HomePage} from "../home/home";
 
 
 @IonicPage()
@@ -42,13 +43,14 @@ export class ProductsPage implements OnInit{
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private productService: ProductService, private cartService: CartService,
-              private auth: AuthService, private wishListService: WishListService) {
+              private auth: AuthService, private wishListService: WishListService,
+              private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
   }
 
   ngOnInit() {
     this.onGetProduct();
     this.onGetReview();
-    setTimeout(() => this.addReview(), 2000);
+    setTimeout(() => this.addReview(), 1000);
   }
 
   onPrevSlide() {
@@ -62,6 +64,23 @@ export class ProductsPage implements OnInit{
   onAddToCart(form: NgForm) {
     this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * form.value.productQuantity,
       form.value.productSize, form.value.productColor, form.value.productQuantity);
+    const alert = this.alertCtrl.create({
+      title: 'Add to cart successfully',
+      buttons: [
+        { text: 'Continue Shopping',
+          handler: () => {
+          this.navCtrl.setRoot(HomePage);
+          }
+        },
+        {
+          text: 'Check Out',
+          handler: () => {
+            this.navCtrl.setRoot(CartListPage);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   onSelectProductDetails() {
@@ -98,6 +117,10 @@ export class ProductsPage implements OnInit{
   }
 
   onGetReview() {
+    const loading = this.loadingCtrl.create({
+      content: 'Getting information ...'
+    });
+    loading.present();
     this.reviewTag = this.tag + ' review';
     this.productService.getImageByTag(this.reviewTag).subscribe(
       response => {
@@ -138,6 +161,7 @@ export class ProductsPage implements OnInit{
             }
           );
         }
+        loading.dismiss();
       }, err => {
         console.log(err);
       }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {AuthService} from "../../services/auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ProductsPage} from "../products/products";
@@ -24,7 +24,7 @@ export class ReviewPage implements OnInit {
 
   constructor(private navCtrl: NavController, private auth: AuthService,
               private navParams: NavParams, private reviewService: ReviewService,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
   }
 
   ngOnInit() {
@@ -60,6 +60,7 @@ export class ReviewPage implements OnInit {
     const loading = this.loadingCtrl.create({
       content: 'Posting Review ...'
     });
+    loading.present();
     this.onUploadPhoto();
     setTimeout(() => {
       this.reviewService.onPostComment(this.fileId, form.value.commentContent).subscribe(
@@ -79,7 +80,11 @@ export class ReviewPage implements OnInit {
       this.reviewService.onPostTag(this.fileId, this.tag).subscribe(
         data => {
           loading.dismiss();
-          alert('Review was posted');
+          const alert = this.alertCtrl.create({
+            title: 'Review was posted',
+            buttons: ['Ok']
+          });
+          alert.present();
           this.navCtrl.setRoot(this.productsPage, {
             'product': product
           });
@@ -88,6 +93,6 @@ export class ReviewPage implements OnInit {
           console.log(err);
           alert('Upload tag failed');
         });
-    }, 2000);
+    }, 1000);
   }
 }

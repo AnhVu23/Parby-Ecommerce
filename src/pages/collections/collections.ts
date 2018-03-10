@@ -4,6 +4,7 @@ import {ProductService} from "../../services/product.service";
 import {ProductShowModel} from "../../model/product-show.model";
 import {WishListService} from "../../services/wish-list.service";
 import {ProductsPage} from "../products/products";
+import {SearchPage} from "../search/search";
 
 /**
  * Generated class for the CollectionsPage page.
@@ -72,5 +73,9 @@ export class CollectionsPage implements OnInit{
     this.navCtrl.push(this.productPage, {
       product: product
     } )
+  }
+
+  onInput(event: any) {
+    this.navCtrl.push(SearchPage);
   }
 }

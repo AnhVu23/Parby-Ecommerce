@@ -6,6 +6,7 @@ import {map} from "rxjs/operators";
 import {WishListService} from "../../services/wish-list.service";
 import {CollectionsPage} from "../collections/collections";
 import {ProductsPage} from "../products/products";
+import {SearchPage} from "../search/search";
 
 
 @IonicPage()
@@ -138,5 +139,9 @@ export class HomePage implements OnInit{
     this.navCtrl.push(this.productPage, {
       product: product
     })
+  }
+
+  onInput(event: any) {
+    this.navCtrl.push(SearchPage);
   }
 }

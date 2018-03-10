@@ -25,7 +25,7 @@ export class CartListPage implements OnInit{
 
   ngOnInit() {
     this.numberOfItems = this.cartService.productsArray.length;
-    this.totalCost = this.cartService.calculatePrice();
+    this.totalCost = +this.cartService.calculatePrice().toFixed(2);
   }
 
   onCheckOut() {
