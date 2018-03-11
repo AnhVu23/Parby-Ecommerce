@@ -32,4 +32,60 @@ page-products {
     right: 0px;
     text-align: center;
   }
+
+  .swiper-button-next, .swiper-button-prev {
+    background-color: snow;
+  }
+
+
+  .reviewBtn {
+    border: solid 1.4px #02ccba;
+    height: 40px;
+  }
+
+  .reviewBtn .button-inner {
+    color: #02ccba;
+    font-weight: 700;
+  }
+
+  .atcBtn {
+    background-image: linear-gradient(160deg, rgb(2, 179, 228), rgb(2, 204, 186)) !important;
+    height: 40px;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  }
+
+  .maxRate {
+    font-size: 0.5em;
+    font-weight: normal;
+  }
+
+  .reviews {
+    background-color: #f6f6f6;
+    margin-bottom: 12px;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  }
+
+  .trustBadgeDiv {
+    text-align: center;
+  }
+
+  .trustBadge p {
+    margin-top: 4px;
+  }
+
+  .trustBadge {
+    background: none;
+    width: 272px;
+    height: 41px;
+  }
+
+  .guarantee {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .guarantee p:first-child {
+    margin-left: 57px;
+    margin-right: 57px;
+  }
 }

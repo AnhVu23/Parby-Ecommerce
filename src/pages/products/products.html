@@ -59,8 +59,13 @@
           <ion-input type="number" name="productQuantity" ngModel required text-right></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button block type="submit" [disabled]="!f.valid"text-center>ADD TO CART</button>
+      <button ion-button block type="submit" [disabled]="!f.valid"text-center class="atcBtn">ADD TO CART</button>
   </form>
+
+  <div class="trustBadgeDiv">
+    <ion-img class="trustBadge" src="https://cdn.shopify.com/s/files/1/1547/8873/files/Yes_We_Vibe_-_Trust_Badge_95154b8e-d9af-468f-816a-177a97115e62.png?2892982720960403187"></ion-img>
+    <p><strong>Wrong size?</strong> Enjoy a one time 100% free replacement</p>
+  </div>
 
   <div>
     <ion-segment>
@@ -78,23 +83,30 @@
     </ion-item>
   </div>
 
-  <div>
+  <div class="guarantee">
+    <h2>Parby Guaranteed</h2>
+    <p>Join more than 50 thousand delighted customers sharing good vibes in over 150 countries</p>
+    <p>Not fully vibing with your product?<br>No worries! We've got it covered.</p>
+    <p>1-800-417-6564 | Support@parby.com</p>
+  </div>
+
+  <div style="margin-top: 43px">
     <h1>CUSTOMER REVIEWS</h1>
   </div>
 
   <div>
-    <h1>{{overallRate}}/5</h1>
-    <rating-show *ngIf="roundedRate != -1"[rate]="roundedRate"></rating-show>
+    <h1>{{overallRate}}<span class="maxRate">/5</span></h1>
+    <rating-show *ngIf="roundedRate != 0"[rate]="roundedRate"></rating-show>
     <p>{{reviewArray.length}} reviews</p>
   </div>
-  <button ion-button block outline (click)="onWriteReview()">WRITE REVIEW</button>
+  <button ion-button block outline (click)="onWriteReview()" class="reviewBtn">WRITE REVIEW</button>
   <br/>
   <br/>
-  <ion-grid *ngFor="let review of reviewArray">
+  <ion-grid *ngFor="let review of reviewArray" class="reviews">
     <ion-row>
       <ion-col col-6>
         <ion-row>
-          <rating-show [rate]="review.rating"></rating-show>
+            <rating-show [rate]="review.rating"></rating-show>
         </ion-row>
         <ion-row>
           <ion-textarea [value]="review.commentContent"></ion-textarea>
