@@ -27,7 +27,7 @@ export class ProductsPage implements OnInit{
   productImagePath : string;
   productQuantity = 1;
   productSize = 'M';
-  productColor = 'White';
+  productColor = 'white';
   description: string;
   segmentButton: string;
 
