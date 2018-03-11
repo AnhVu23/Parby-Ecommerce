@@ -30,11 +30,10 @@
     </ion-slide>
     </ion-slides>
   </div>
-  <form (ngSubmit)="onAddToCart(f)" #f="ngForm">
     <ion-list>
         <ion-item>
           <ion-label>Choose color</ion-label>
-          <ion-select name="productColor" ngModel required>
+          <ion-select [(ngModel)]="productColor" required>
             <ion-option value="red">Red</ion-option>
             <ion-option value="grey">Grey</ion-option>
             <ion-option value="black">Black</ion-option>
@@ -45,7 +44,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Choose size</ion-label>
-          <ion-select name="productSize" ngModel required>
+          <ion-select [(ngModel)]="productSize" required>
             <ion-option value="S">Size S</ion-option>
             <ion-option value="M">Size M</ion-option>
             <ion-option value="L">Size L</ion-option>
@@ -56,12 +55,10 @@
       <ion-list>
         <ion-item>
           <ion-label>Quantity</ion-label>
-          <ion-input type="number" name="productQuantity" ngModel required text-right></ion-input>
+          <ion-input type="number" [(ngModel)]="productQuantity" required text-right></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button block type="submit" [disabled]="!f.valid"text-center class="atcBtn">ADD TO CART</button>
-  </form>
-
+      <button ion-button block type="submit" text-center (click)="onAddToCart()">ADD TO CART</button>s
   <div class="trustBadgeDiv">
     <ion-img class="trustBadge" src="https://cdn.shopify.com/s/files/1/1547/8873/files/Yes_We_Vibe_-_Trust_Badge_95154b8e-d9af-468f-816a-177a97115e62.png?2892982720960403187"></ion-img>
     <p><strong>Wrong size?</strong> Enjoy a one time 100% free replacement</p>

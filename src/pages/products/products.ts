@@ -25,6 +25,9 @@ export class ProductsPage implements OnInit{
   productName : string = 'example';
   productPrice : number;
   productImagePath : string;
+  productQuantity = 1;
+  productSize = 'M';
+  productColor = 'White';
   description: string;
   segmentButton: string;
 
@@ -61,9 +64,9 @@ export class ProductsPage implements OnInit{
     this.productSlides.slideNext();
   }
 
-  onAddToCart(form: NgForm) {
-    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * form.value.productQuantity,
-      form.value.productSize, form.value.productColor, form.value.productQuantity);
+  onAddToCart() {
+    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * this.productQuantity,
+      this.productSize, this.productColor, this.productQuantity);
     const alert = this.alertCtrl.create({
       title: 'Add to cart successfully',
       buttons: [
