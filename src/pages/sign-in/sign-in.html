@@ -19,22 +19,35 @@
 
 <ion-content padding>
   <div>
-    <img class="center" width="10%" src="../../assets/image/Second-Logo.png">
+    <img class="image-center" width="10%" src="../../assets/image/Second-Logo.png">
   </div>
   <div>
-    <h1 class="center" width="50%">Sign in to Parby</h1>
+    <h1 text-center id="title">Sign in to Parby</h1>
   </div>
-  <div></div>
+  <div>
+    <p text-center id="description">Welcome back to parenting community. Please enter your details to sign in</p>
+  </div>
   <form (ngSubmit)="onSignIn(f)" #f="ngForm">
     <ion-item>
       <ion-input type="text" name="userName" ngModel required placeholder="Username">
       </ion-input>
       <ion-icon name="person" item-left></ion-icon>
     </ion-item>
+    <br/>
     <ion-item>
       <ion-input type="password" name="password" ngModel required [minlength]="6" placeholder="Password" #password></ion-input>
       <ion-icon name="lock" item-left></ion-icon>
     </ion-item>
+    <ion-item>
+      <a href="" item-end id="forgotPassword">Forgotten Your Password?</a>
+    </ion-item>
     <button ion-button type="submit" full [disabled]="!f.valid" class="signInBtn">Sign In</button>
   </form>
+  <div>
+    <p text-center id="oAuthContinue">Or continue with</p>
+  </div>
+  <div text-center class="oAuthImages">
+    <img item-end src="../../assets/image/google.png">
+    <img item-start src="../../assets/image/facebook.png">
+  </div>
 </ion-content>

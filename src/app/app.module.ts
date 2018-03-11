@@ -18,7 +18,6 @@ import {CollectionsPage} from "../pages/collections/collections";
 import {ProductsPage} from "../pages/products/products";
 import {WishListPage} from "../pages/wish-list/wish-list";
 import {ProfilePage} from "../pages/profile/profile";
-import {SettingsPage} from "../pages/settings/settings";
 import {ProductService} from "../services/product.service";
 import {CartService} from "../services/cart.service";
 import {ReviewPage} from "../pages/review/review";
@@ -44,7 +43,6 @@ import {SearchService} from "../services/search.service";
     CollectionsPage,
     WishListPage,
     ProfilePage,
-    SettingsPage,
     ProductsPage,
     ReviewPage,
     Payment_1Page,
@@ -73,7 +71,6 @@ import {SearchService} from "../services/search.service";
     ProductsPage,
     WishListPage,
     ProfilePage,
-    SettingsPage,
     ReviewPage,
     Payment_1Page,
     Payment_2Page,

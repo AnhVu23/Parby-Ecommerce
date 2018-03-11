@@ -7,8 +7,6 @@ import {SignInPage} from "../pages/sign-in/sign-in";
 import {AuthService} from "../services/auth.service";
 import {TabsPage} from "../pages/tabs/tabs";
 import {ProfilePage} from "../pages/profile/profile";
-import {SettingsPage} from "../pages/settings/settings";
-import {ProductsPage} from "../pages/products/products";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +16,6 @@ export class MyApp {
   signUpPage = SignUpPage;
   tabsPage = TabsPage;
   profilePage = ProfilePage;
-  settingsPage = SettingsPage;
   @ViewChild('nav') nav: NavController;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private menuCtrl: MenuController, private auth: AuthService) {
@@ -55,6 +52,7 @@ export class MyApp {
     this.menuCtrl.close();
     this.auth.authenticated = false;
     this.rootPage = SignInPage;
+    this.nav.setRoot(SignInPage);
   }
 }
 

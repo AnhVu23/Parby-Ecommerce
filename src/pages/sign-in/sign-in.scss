@@ -1,7 +1,17 @@
 page-sign-in {
+  #description {
+    margin-bottom: 42px;
+  }
 
+  #forgotPassword {
+    margin-top: 7px;
+    margin-bottom: 23px;
+    color: grey;
+    font-size: 0.75em;
+    text-decoration: none;
+  }
 
-  .center {
+  .image-center {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -19,6 +29,20 @@ page-sign-in {
 
   ion-input {
     color: black;
+  }
+
+  #oAuthContinue {
+    margin: 30px;
+  }
+
+  #oAuthImages {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #title {
+    margin: 25px 0;
   }
 
   .signInBtn {

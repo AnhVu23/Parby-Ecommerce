@@ -40,14 +40,6 @@
       <button
         ion-item
         icon-left
-        (click)="onLoad(settingsPage)"
-        *ngIf="this.auth.authenticated">
-        <ion-icon name="settings"
-        ></ion-icon>
-        Settings</button>
-      <button
-        ion-item
-        icon-left
         (click)="onSignOut()"
         *ngIf="this.auth.authenticated">
         <ion-icon name="log-out"
