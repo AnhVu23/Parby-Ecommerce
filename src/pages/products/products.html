@@ -30,11 +30,10 @@
     </ion-slide>
     </ion-slides>
   </div>
-  <form (ngSubmit)="onAddToCart(f)" #f="ngForm">
     <ion-list>
         <ion-item>
           <ion-label>Choose color</ion-label>
-          <ion-select name="productColor" ngModel required>
+          <ion-select [(ngModel)]="productColor" required>
             <ion-option value="red">Red</ion-option>
             <ion-option value="grey">Grey</ion-option>
             <ion-option value="black">Black</ion-option>
@@ -45,7 +44,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Choose size</ion-label>
-          <ion-select name="productSize" ngModel required>
+          <ion-select [(ngModel)]="productSize" required>
             <ion-option value="S">Size S</ion-option>
             <ion-option value="M">Size M</ion-option>
             <ion-option value="L">Size L</ion-option>
@@ -56,11 +55,10 @@
       <ion-list>
         <ion-item>
           <ion-label>Quantity</ion-label>
-          <ion-input type="number" name="productQuantity" ngModel required text-right></ion-input>
+          <ion-input type="number" [(ngModel)]="productQuantity" required text-right></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button block type="submit" [disabled]="!f.valid"text-center>ADD TO CART</button>
-  </form>
+      <button ion-button block type="submit" text-center (click)="onAddToCart()">ADD TO CART</button>
 
   <div>
     <ion-segment>
@@ -84,7 +82,7 @@
 
   <div>
     <h1>{{overallRate}}/5</h1>
-    <rating-show *ngIf="roundedRate != -1"[rate]="roundedRate"></rating-show>
+    <rating-show *ngIf="roundedRate != 0" [rate]="roundedRate"></rating-show>
     <p>{{reviewArray.length}} reviews</p>
   </div>
   <button ion-button block outline (click)="onWriteReview()">WRITE REVIEW</button>

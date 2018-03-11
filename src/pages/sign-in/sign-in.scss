@@ -1,3 +1,27 @@
 page-sign-in {
 
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .item-inner {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .input-has-focus {
+    border-bottom: 0.5px solid $color-1;
+    color: $color-1;
+  }
+
+  ion-input {
+    color: black;
+  }
+
+  .signInBtn {
+    background-image: linear-gradient(160deg, rgb(2, 179, 228), rgb(2, 204, 186)) !important;
+  }
 }
