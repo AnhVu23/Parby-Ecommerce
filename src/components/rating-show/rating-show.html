@@ -1,6 +1,6 @@
 <ion-row>
   <ion-row no-lines *ngFor="let element of range; index as i">
-    <ion-col col-3>
+    <ion-col col-3 class="star">
       <ion-icon *ngIf="!isRated[i]" name="star-outline"></ion-icon>
       <ion-icon *ngIf="isRated[i]" name="star"></ion-icon>
     </ion-col>

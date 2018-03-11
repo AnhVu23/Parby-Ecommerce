@@ -34,7 +34,26 @@ page-products {
   }
 
   .swiper-button-next, .swiper-button-prev {
-    background-color: snow;
+    background-color: transparent;
+  }
+
+  .productTitle {
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .productPrice {
+    font-size: 1.3em;
+    text-align: right;
+  }
+
+  .item-md {
+    padding-left: 5px;
+  }
+
+  .atcBtn {
+    background-image: linear-gradient(160deg, rgb(2, 179, 228), rgb(2, 204, 186)) !important;
+    font-weight: 700;
   }
 
 
@@ -85,7 +104,11 @@ page-products {
   }
 
   .guarantee p:first-child {
-    margin-left: 57px;
-    margin-right: 57px;
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .text-input-md {
+    margin-left: 0;
   }
 }
