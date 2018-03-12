@@ -42,7 +42,6 @@ export class CollectionsPage implements OnInit{
 
   onGetProduct() {
     this.tag = this.navParams.get('tag');
-    console.log(this.tag);
     this.productService.getImageByTag(this.tag).subscribe(
       response => {
         console.log(response);
@@ -61,7 +60,7 @@ export class CollectionsPage implements OnInit{
 
   onChangeWishList(event: any, index: number) {
     event.stopPropagation();
-      this.productArray[index].isLiked = true;
+      this.productArray[index].isLiked = !this.productArray[index].isLiked;
       if(this.productArray[index].isLiked) {
         this.wishListService.addToWishList(this.productArray[index].name, this.productArray[index].imagePath, this.productArray[index].price, this.productArray[index].tag);
       } else {
@@ -71,8 +70,9 @@ export class CollectionsPage implements OnInit{
 
   onNagivateToProduct(product: ProductShowModel) {
     this.navCtrl.push(this.productPage, {
-      product: product
-    } )
+      product: product,
+      tag: this.tag
+    })
   }
 
   onInput(event: any) {

@@ -24,13 +24,22 @@ export class CartListPage implements OnInit{
   }
 
   ngOnInit() {
-    this.numberOfItems = this.cartService.productsArray.length;
-    this.totalCost = +this.cartService.calculatePrice().toFixed(2);
+    this.onUpdate();
   }
 
   onCheckOut() {
     this.navCtrl.push(this.payment1Page, {
       'cost': this.totalCost
     });
+  }
+
+  onRemoveProduct(index: number) {
+    this.cartService.removeProduct(index);
+    this.onUpdate();
+  }
+
+  onUpdate() {
+    this.numberOfItems = this.cartService.productsArray.length;
+    this.totalCost = +this.cartService.calculatePrice().toFixed(2);
   }
 }

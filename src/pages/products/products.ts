@@ -7,7 +7,6 @@ import {ReviewPage} from "../review/review";
 import {AuthService} from "../../services/auth.service";
 import {Review} from "../../model/review.model";
 import {WishListService} from "../../services/wish-list.service";
-import {NgForm} from "@angular/forms";
 import {ProductShowModel} from "../../model/product-show.model";
 import {HomePage} from "../home/home";
 
@@ -20,6 +19,8 @@ import {HomePage} from "../home/home";
 export class ProductsPage implements OnInit{
   tag = 'parby baby diaper_changing_pad';
   productsArray: any;
+  relatedProductsArray: ProductShowModel[] = [];
+  collectionTag: string;
   uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads';
 
   productName : string = 'example';
@@ -39,8 +40,8 @@ export class ProductsPage implements OnInit{
   reviewRate: number[] = [];
   reviewPage = ReviewPage;
 
-  overallRate = 0;
-  roundedRate = 0;
+  overallRate = -1;
+  roundedRate = -1;
   isLiked = false;
   @ViewChild('productSlides') productSlides: Slides;
 
@@ -53,6 +54,7 @@ export class ProductsPage implements OnInit{
   ngOnInit() {
     this.onGetProduct();
     this.onGetReview();
+    this.onGetRelatedProduct();
     setTimeout(() => this.addReview(), 1000);
   }
 
@@ -78,7 +80,7 @@ export class ProductsPage implements OnInit{
         {
           text: 'Check Out',
           handler: () => {
-            this.navCtrl.setRoot(CartListPage);
+            this.navCtrl.push(CartListPage);
           }
         }
       ]
@@ -180,6 +182,9 @@ export class ProductsPage implements OnInit{
     if(this.reviewRate.length > 0) {
       this.overallRate = this.productService.calculateOverallRate(this.reviewRate);
       this.roundedRate = Math.floor(this.overallRate);
+    } else {
+      this.overallRate = 0;
+      this.roundedRate = 0;
     }
   }
 
@@ -190,5 +195,45 @@ export class ProductsPage implements OnInit{
     } else {
       this.wishListService.removeFromWishList(this.productName);
     }
+  }
+
+  onChangeWishListRelated(event: any, index: number) {
+    event.stopPropagation();
+    const product = this.relatedProductsArray[index];
+    product.isLiked = !product.isLiked;
+    if(product.isLiked) {
+      this.wishListService.addToWishList(product.name, product.imagePath, product.price, product.tag);
+    } else {
+      this.wishListService.removeFromWishList(product.name);
+    }
+  }
+
+  onGetRelatedProduct() {
+    this.collectionTag = this.navParams.get('tag');
+    console.log(this.collectionTag);
+    this.productService.getImageByTag(this.collectionTag).subscribe(
+      response => {
+        const temp: any = response;
+        const tempProductArray: ProductShowModel[] = [];
+        for(let element of temp) {
+          const imagePath = this.uploadUrl + '/' + element['filename'];
+          const price = +element['title'];
+          const name = element['description'];
+          const tag = this.productService.renameTag(this.collectionTag, name);
+          if(name !== this.productName) {
+            tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
+          }
+        }
+        const start = Math.floor(Math.random() * (tempProductArray.length - 1));
+        this.relatedProductsArray = tempProductArray.slice(start, start + 2);
+      }
+    );
+  }
+
+  onNagivateToProduct(product: ProductShowModel) {
+    this.navCtrl.push(ProductsPage, {
+      product: product,
+      tag: this.collectionTag
+    })
   }
 }

@@ -13,9 +13,14 @@ export class CartService {
   }
 
   calculatePrice() {
+    this.priceSum = 0;
     for(let product of this.productsArray) {
       this.priceSum += product.price;
     }
     return this.priceSum;
+  }
+
+  removeProduct(index: number) {
+    this.productsArray.splice(index,1);
   }
 }

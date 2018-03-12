@@ -6,7 +6,9 @@ page-products {
     min-height: 160px;
     height: auto;
   }
-
+  .href {
+    color: black;
+  }
   .label-username {
     font-weight: bold;
   }
@@ -21,7 +23,7 @@ page-products {
     opacity: 1;
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 
   .right-top {

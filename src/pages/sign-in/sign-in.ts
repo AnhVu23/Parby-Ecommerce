@@ -3,6 +3,7 @@ import {AlertController, IonicPage, LoadingController, NavController, NavParams}
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {TabsPage} from "../tabs/tabs";
+import {SignUpPage} from "../sign-up/sign-up";
 
 /**
  * Generated class for the SignInPage page.
@@ -49,6 +50,10 @@ export class SignInPage {
         console.log(err);
       }
     );
+  }
+
+  onNavigateToSignUp() {
+    this.navCtrl.setRoot(SignUpPage);
   }
 
 }

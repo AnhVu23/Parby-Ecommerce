@@ -44,13 +44,15 @@ export class HomePage implements OnInit{
       response => {
         console.log(response);
         const temp: any = response;
+        const tempProductArray: ProductShowModel[] = [];
         for(let element of temp) {
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
           const tag = this.productService.renameTag(this.babyTag, name);
-          this.babyProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
+          tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
+        this.babyProduct = tempProductArray.slice(0,2);
         this.babyReady = true;
       }
     );
@@ -61,13 +63,15 @@ export class HomePage implements OnInit{
       response => {
         console.log(response);
         const temp: any = response;
+        const tempProductArray: ProductShowModel[] = [];
         for(let element of temp) {
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
           const tag = this.productService.renameTag(this.boyTag, name);
-          this.boyProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
+          tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
+        this.boyProduct = tempProductArray.slice(0,2);
         this.boyReady = true;
       }
     );
@@ -78,13 +82,15 @@ export class HomePage implements OnInit{
       response => {
         console.log(response);
         const temp: any = response;
+        const tempProductArray: ProductShowModel[] = [];
         for(let element of temp) {
           const imagePath = this.uploadUrl + '/' + element['filename'];
           const price = +element['title'];
           const name = element['description'];
           const tag = this.productService.renameTag(this.girlTag, name);
-          this.girlProduct.push(new ProductShowModel(name, imagePath, price, tag, false));
+          tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
+        this.girlProduct = tempProductArray.slice(0,2);
         this.girlReady = true;
       }
     );
@@ -93,21 +99,21 @@ export class HomePage implements OnInit{
   onChangeWishList(event: any, index: number, tag: string) {
     event.stopPropagation();
     if (tag === this.babyTag) {
-      this.babyProduct[index].isLiked = true;
+      this.babyProduct[index].isLiked = !this.babyProduct[index].isLiked;
       if(this.babyProduct[index].isLiked) {
         this.wishListService.addToWishList(this.babyProduct[index].name, this.babyProduct[index].imagePath, this.babyProduct[index].price, this.babyProduct[index].tag);
       } else {
         this.wishListService.removeFromWishList(this.babyProduct[index].name);
       }
     } else if (tag === this.girlTag) {
-      this.girlProduct[index].isLiked = true;
+      this.girlProduct[index].isLiked = !this.girlProduct[index].isLiked;
       if (this.girlProduct[index].isLiked) {
         this.wishListService.addToWishList(this.girlProduct[index].name, this.girlProduct[index].imagePath, this.girlProduct[index].price, this.girlProduct[index].tag);
       } else {
         this.wishListService.removeFromWishList(this.girlProduct[index].name);
       }
     } else if (tag === this.boyTag) {
-      this.boyProduct[index].isLiked = true;
+      this.boyProduct[index].isLiked = !this.boyProduct[index].isLiked;
       if (this.boyProduct[index].isLiked) {
         this.wishListService.addToWishList(this.boyProduct[index].name, this.boyProduct[index].imagePath, this.boyProduct[index].price, this.boyProduct[index].tag);
       } else {
@@ -135,9 +141,10 @@ export class HomePage implements OnInit{
     }
   }
 
-  onNagivateToProduct(product: ProductShowModel) {
+  onNagivateToProduct(product: ProductShowModel, tag: string) {
     this.navCtrl.push(this.productPage, {
-      product: product
+      product: product,
+      tag: tag
     })
   }
 

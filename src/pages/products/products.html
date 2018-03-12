@@ -94,12 +94,13 @@
 
   <div>
     <h1>{{overallRate}}<span class="maxRate">/5</span></h1>
-    <rating-show *ngIf="roundedRate != 0"[rate]="roundedRate"></rating-show>
+    <rating-show *ngIf="roundedRate != -1"[rate]="roundedRate"></rating-show>
     <p>{{reviewArray.length}} reviews</p>
   </div>
   <button ion-button block outline (click)="onWriteReview()" class="reviewBtn">WRITE REVIEW</button>
   <br/>
   <br/>
+
   <ion-grid *ngFor="let review of reviewArray" class="reviews">
     <ion-row>
       <ion-col col-6>
@@ -117,8 +118,32 @@
           <ion-img class="review-image"[src]="review.imagePath"></ion-img>
       </ion-col>
     </ion-row>
-
-
+  </ion-grid>
+  <hr>
+  <ion-grid>
+    <ion-row>
+      <h1>RELATED PRODUCT</h1>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 *ngFor="let product of relatedProductsArray; index as i">
+        <a class="href" (click)="onNagivateToProduct(product)">
+          <ion-row>
+            <img class="product-image" [src]="product.imagePath">
+            <div class="right-top">
+              <button clear ion-button (click)="onChangeWishListRelated($event, i)">
+                <ion-icon [name]="product.isLiked ? 'heart' : 'heart-outline'"></ion-icon>
+              </button>
+            </div>
+          </ion-row>
+          <ion-row>
+            <p>{{product.name}}</p>
+          </ion-row>
+          <ion-row>
+            <h1>{{product.price}}</h1>
+          </ion-row>
+        </a>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 
