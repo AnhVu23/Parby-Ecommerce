@@ -1,3 +1,37 @@
 page-sign-up {
+  #description {
+    margin-bottom: 42px;
+  }
 
+  #title {
+    margin: 25px 0;
+  }
+
+  .image-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signUpBtn {
+    width: 100%;
+    background-image: linear-gradient(160deg, rgb(2, 179, 228), rgb(2, 204, 186)) !important;
+  }
+
+  .item-ios.item-block .item-inner {
+    border: 0px;
+  }
+
+  .item-block {
+    padding-left: 0;
+    border: solid 1px #c4c4c4;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
+
+  .input-has-focus {
+    border-bottom: 0.5px solid $color-1;
+    color: $color-1;
+  }
 }

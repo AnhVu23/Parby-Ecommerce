@@ -42,7 +42,7 @@ export class ProductsPage implements OnInit{
 
   overallRate = -1;
   roundedRate = -1;
-  isLiked = false;
+  isLiked: boolean;
   @ViewChild('productSlides') productSlides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -108,6 +108,7 @@ export class ProductsPage implements OnInit{
     this.productName = product.name;
     this.productImagePath = product.imagePath;
     this.productPrice = product.price;
+    this.isLiked = product.isLiked;
     this.segmentButton = 'productDetails';
     this.description = 'Lorem Ipsum';
     this.tag = product.tag;

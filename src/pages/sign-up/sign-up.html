@@ -19,28 +19,37 @@
 
 
 <ion-content padding>
+  <div>
+    <img class="image-center" width="10%" src="../../assets/image/Second-Logo.png">
+  </div>
+  <div>
+    <h1 text-center id="title">Sign in to Parby</h1>
+  </div>
+  <div>
+    <p text-center id="description">Parby is a reliable ecommerce platform for moms.</p>
+  </div>
   <form (ngSubmit)="onSignUp(f)" #f="ngForm">
     <ion-item>
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" name="userName" ngModel required></ion-input>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input type="text" name="userName" ngModel required placeholder="Username"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password" name="password" ngModel required [minlength]="6" #password></ion-input>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" name="password" ngModel required [minlength]="6" #password placeholder="Password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Repeat Password</ion-label>
-      <ion-input type="password" name="repeatedPassword" ngModel required [minlength]="6" #repeatedPassword></ion-input>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" name="repeatedPassword" ngModel required [minlength]="6" #repeatedPassword placeholder="Repeat Password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type="email" name="email" ngModel required ></ion-input>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input type="email" name="email" ngModel required placeholder="Email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label fixed>Full Name</ion-label>
-      <ion-input type="text" name="fullName" ngModel ></ion-input>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input type="text" name="fullName" ngModel placeholder="Full Name"></ion-input>
     </ion-item>
-    <button ion-button type="submit" [disabled]="!f.valid || !(repeatedPassword.value === password.value)">Sign Up</button>
+    <button ion-button type="submit" [disabled]="!f.valid || !(repeatedPassword.value === password.value)" class="signUpBtn">Sign Up</button>
   </form>
   <p *ngIf="!(repeatedPassword.value === password.value)">Re-type your password</p>
   <hr>

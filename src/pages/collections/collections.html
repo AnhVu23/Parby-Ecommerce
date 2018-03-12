@@ -39,7 +39,7 @@
           <p *ngIf="ready">{{product.name}}</p>
         </ion-row>
         <ion-row>
-          <h1 *ngIf="ready">{{product.price}}</h1>
+          <h1 *ngIf="ready">${{product.price}}</h1>
         </ion-row>
       </a>
       </ion-col>

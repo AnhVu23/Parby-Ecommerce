@@ -32,14 +32,6 @@
       <button
         ion-item
         icon-left
-        (click)="onLoad(profilePage)"
-        *ngIf="this.auth.authenticated">
-        <ion-icon name="contact"
-        ></ion-icon>
-        Profile</button>
-      <button
-        ion-item
-        icon-left
         (click)="onSignOut()"
         *ngIf="this.auth.authenticated">
         <ion-icon name="log-out"

@@ -15,7 +15,7 @@
   <div>
     <ion-slides pager="true" paginationType="fraction" #productSlides>
     <ion-slide *ngFor="let product of productsArray">
-      <img class="product-image" [src]="uploadUrl + '/' + product.filename">
+      <img class="preview-image" [src]="uploadUrl + '/' + product.filename">
       <div class="right-top">
         <button clear ion-button (click)="onChangeWishList()">
           <ion-icon [name]="isLiked? 'heart' : 'heart-outline'"></ion-icon>
@@ -146,7 +146,7 @@
             <p>{{product.name}}</p>
           </ion-row>
           <ion-row>
-            <h1>{{product.price}}</h1>
+            <h1>${{product.price}}</h1>
           </ion-row>
         </a>
       </ion-col>
