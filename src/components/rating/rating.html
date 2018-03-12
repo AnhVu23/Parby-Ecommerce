@@ -1,6 +1,6 @@
 <ion-row>
   <ion-row *ngFor="let element of range; index as i">
-    <ion-col col-6>
+    <ion-col col-6 class="star">
       <ion-icon *ngIf="!isClicked[i]" name="star-outline" (click)="onRating(i)"></ion-icon>
       <ion-icon *ngIf="isClicked[i]" name="star" (click)="onUpdateRating(i)"></ion-icon>
     </ion-col>
