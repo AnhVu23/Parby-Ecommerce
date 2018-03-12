@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProductShowModel} from "../../model/product-show.model";
 import {ProductService} from "../../services/product.service";
-import {map} from "rxjs/operators";
 import {WishListService} from "../../services/wish-list.service";
 import {CollectionsPage} from "../collections/collections";
 import {ProductsPage} from "../products/products";
@@ -20,12 +19,13 @@ export class HomePage implements OnInit{
   collectionPage = CollectionsPage;
 
   searchInput: string;
-  babyProduct: ProductShowModel[] = [];
   babyTag = 'parby-e baby';
-  girlProduct: ProductShowModel[] = [];
   girlTag = 'parby-e girl';
-  boyProduct: ProductShowModel[] = [];
   boyTag = 'parby-e boy';
+  babyProduct: ProductShowModel[] = [];
+  girlProduct: ProductShowModel[] = [];
+  boyProduct: ProductShowModel[] = [];
+
   babyReady = false;
   girlReady = false;
   boyReady = false;
@@ -52,7 +52,7 @@ export class HomePage implements OnInit{
           const tag = this.productService.renameTag(this.babyTag, name);
           tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
-        this.babyProduct = tempProductArray.slice(0,2);
+        this.babyProduct = tempProductArray.slice(0,4);
         this.babyReady = true;
       }
     );
@@ -71,7 +71,7 @@ export class HomePage implements OnInit{
           const tag = this.productService.renameTag(this.boyTag, name);
           tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
-        this.boyProduct = tempProductArray.slice(0,2);
+        this.boyProduct = tempProductArray.slice(0,4);
         this.boyReady = true;
       }
     );
@@ -90,7 +90,7 @@ export class HomePage implements OnInit{
           const tag = this.productService.renameTag(this.girlTag, name);
           tempProductArray.push(new ProductShowModel(name, imagePath, price, tag, false));
         }
-        this.girlProduct = tempProductArray.slice(0,2);
+        this.girlProduct = tempProductArray.slice(0,4);
         this.girlReady = true;
       }
     );

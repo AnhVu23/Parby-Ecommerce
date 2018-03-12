@@ -62,7 +62,8 @@ export class SearchPage implements OnInit{
         const imagePath = this.uploadUrl + '/' + temp['filename'];
         this.product = new ProductShowModel(name, imagePath, price, tag, false);
         this.navCtrl.push(ProductsPage, {
-          product: this.product
+          product: this.product,
+          tag: this.defaultTag + ' ' + item.category
         })
       }
     );

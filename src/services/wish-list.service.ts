@@ -20,4 +20,10 @@ export class WishListService {
       }
     }
   }
+
+  getCollectionTag(tag: string) {
+    const tagSplit = tag.split( ' ');
+    const collectionTag = tagSplit[0] + ' ' + tagSplit[1];
+    return collectionTag;
+  }
 }
