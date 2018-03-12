@@ -18,13 +18,13 @@
   <div>
     <form (ngSubmit)="onPostReview(f)" #f="ngForm">
       <ion-row>
-        <ion-label>Your name</ion-label>
+        <ion-label><strong>Your name</strong></ion-label>
       </ion-row>
       <ion-row>
         <ion-input type="text" [value]="userName" [disabled]="true"></ion-input>
       </ion-row>
       <ion-row>
-        <ion-label>Choose a photo</ion-label>
+        <ion-label><strong>Choose a photo</strong></ion-label>
       </ion-row>
       <ion-row>
         <ion-icon name="camera">
@@ -32,13 +32,13 @@
         </ion-icon>
       </ion-row>
       <ion-row>
-        <ion-label>Your review</ion-label>
+        <ion-label><strong>Your review</strong></ion-label>
       </ion-row>
       <ion-item>
         <ion-textarea name="commentContent" ngModel required></ion-textarea>
       </ion-item>
       <ion-row>
-        <button ion-button full type="submit" [disabled]="!f.valid">POST REVIEW</button>
+        <button ion-button full type="submit" [disabled]="!f.valid" class="postReviewBtn">POST REVIEW</button>
       </ion-row>
     </form>
   </div>

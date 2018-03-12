@@ -2,12 +2,19 @@ page-wish-list {
   .product-image {
     opacity: 1;
     width: 100%;
-    min-height: 240px;
+    height: 220px;
     display: block;
     transition: .5s ease;
     backface-visibility: hidden;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+    object-fit: cover;
   }
 
+  .button-clear-ios {
+    color: red;
+    width: 20px;
+    height: 20px;
+  }
 
   .right-top {
     transition: .5s ease;

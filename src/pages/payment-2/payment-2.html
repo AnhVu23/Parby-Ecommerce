@@ -14,19 +14,24 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="onPay(f)" #f="ngForm">
+  <form (ngSubmit)="onPay(f)" #f="ngForm" id="payment2">
     <ion-grid>
       <ion-row>
-        <ion-col col-6><h1>Shipping Details</h1></ion-col>
+        <ion-col col-6><h2>Payment Details</h2></ion-col>
         <ion-col><h3>Step 2 of 2</h3></ion-col>
       </ion-row>
+      <hr>
       <ion-row><ion-input type="text" placeholder="Credit card number" name="ccNumber" ngModel required minlength="12"></ion-input></ion-row>
       <ion-row>
-        <ion-col col-6><ion-input type="text" placeholder="MM/YY" name="expiryDate" ngModel required></ion-input></ion-col>
-        <ion-col col-6><ion-input type="text" placeholder="CCV" name="secretNum" ngModel required></ion-input></ion-col>
+        <ion-col col-6><ion-input type="text" placeholder="MM/YY" name="expiryDate" ngModel class="expiryDate" required></ion-input></ion-col>
+        <ion-col col-6><ion-input type="text" placeholder="CCV" name="secretNum" ngModel class="secretNum" required></ion-input></ion-col>
       </ion-row>
       <ion-row></ion-row>
-      <ion-row><button ion-button type="submit" [disabled]="!f.valid">PAY NOW</button></ion-row>
+      <div class="secure">
+        <p>We do not store your credit card information. All of sensitive card details are encrypted using SSL and payments are securely handled by Stripe</p>
+        <ion-img class="trustBadge" src="https://cdn.shopify.com/s/files/1/0952/8368/t/12/assets/Logos.png?17284152686264927914"></ion-img>
+      </div>
+      <ion-row><button ion-button type="submit" [disabled]="!f.valid" class="payBtn">PAY NOW</button></ion-row>
     </ion-grid>
   </form>
 </ion-content>
