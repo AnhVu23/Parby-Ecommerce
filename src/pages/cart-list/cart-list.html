@@ -44,7 +44,7 @@
         </ion-row>
       </ion-col>
       <ion-col col-1>
-        <button ion-button clear (click)="onRemoveProduct(i)">
+        <button class="right-top" ion-button clear (click)="onRemoveProduct(i)">
           <ion-icon name="close"></ion-icon>
         </button>
       </ion-col>
@@ -60,7 +60,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <button ion-button full (click)="onCheckOut()" class="checkoutBtn">CHECK OUT</button>
+      <button ion-button full [disabled]="numberOfItems === 0" (click)="onCheckOut()" class="checkoutBtn">CHECK OUT</button>
     </ion-row>
   </ion-grid>
 </ion-content>

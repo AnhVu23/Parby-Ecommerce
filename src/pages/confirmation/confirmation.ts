@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from "../home/home";
+import {CartService} from "../../services/cart.service";
 
 /**
  * Generated class for the ConfirmationPage page.
@@ -17,11 +18,13 @@ import {HomePage} from "../home/home";
 export class ConfirmationPage implements OnInit{
   email: string;
   homePage = HomePage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
     this.email = this.navParams.get('email');
+    this.cartService.productsArray = [];
   }
 
   onBackToHome() {
