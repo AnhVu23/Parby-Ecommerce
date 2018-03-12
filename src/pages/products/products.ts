@@ -55,7 +55,7 @@ export class ProductsPage implements OnInit{
     this.onGetProduct();
     this.onGetReview();
     this.onGetRelatedProduct();
-    setTimeout(() => this.addReview(), 1000);
+    setTimeout(() => this.addReview(), 2000);
   }
 
   onPrevSlide() {
