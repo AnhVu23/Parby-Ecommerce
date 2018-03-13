@@ -15,7 +15,6 @@ export class MyApp {
   rootPage: any = SignInPage;
   signUpPage = SignUpPage;
   tabsPage = TabsPage;
-  profilePage = ProfilePage;
   @ViewChild('nav') nav: NavController;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private menuCtrl: MenuController, private auth: AuthService) {
