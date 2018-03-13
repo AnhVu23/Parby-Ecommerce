@@ -3,11 +3,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class SearchService {
   searchResultArray = [
-    {title: 'Diaper Changing Pad',
-    category: 'baby'},
     {title: 'Whale Pijama',
-    category: 'baby'},
-    {title: 'Nike White Shoes',
     category: 'baby'},
     {title: 'Batman Pijamas',
       category: 'baby'},
@@ -15,8 +11,6 @@ export class SearchService {
       category: 'baby'},
     {title: 'Sweat Shirt Trousers',
       category: 'baby'},
-    {title: 'Adidas Black Sportwear',
-      category: 'boy'},
     {title: 'Elephant Pijama',
       category: 'boy'},
     {title: 'Anchor Pijama Collection',

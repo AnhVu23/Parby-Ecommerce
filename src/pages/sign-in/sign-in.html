@@ -19,9 +19,6 @@
 
 <ion-content padding>
   <div>
-    <img class="image-center" width="10%" src="../../assets/image/Second-Logo.png">
-  </div>
-  <div>
     <h1 text-center id="title">Sign in to Parby</h1>
   </div>
   <div>
@@ -43,13 +40,6 @@
     </ion-item>
     <button ion-button type="submit" full [disabled]="!f.valid" class="signInBtn">Sign In</button>
   </form>
-  <div>
-    <p text-center id="oAuthContinue">Or continue with</p>
-  </div>
-  <div text-center class="oAuthImages">
-    <img item-end src="../../assets/image/google.png">
-    <img item-start src="../../assets/image/facebook.png">
-  </div>
     <div class="no-account">
       <p>Don't have an account? <a text-center (click)="onNavigateToSignUp()">Sign up</a></p>
     </div>

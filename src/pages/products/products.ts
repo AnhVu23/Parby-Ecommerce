@@ -30,7 +30,7 @@ export class ProductsPage implements OnInit{
   productSize = 'M';
   productColor = 'white';
   description: string;
-  segmentButton: string;
+  segmentButton: string = 'productDetails';
 
   reviewTag: string;
   reviewArray: Review[] = [];
@@ -67,7 +67,8 @@ export class ProductsPage implements OnInit{
   }
 
   onAddToCart() {
-    this.cartService.addProduct(this.productImagePath, this.productName, this.productPrice * this.productQuantity,
+    const cost = +(this.productPrice * this.productQuantity).toFixed(2)
+    this.cartService.addProduct(this.productImagePath, this.productName, cost,
       this.productSize, this.productColor, this.productQuantity);
     const alert = this.alertCtrl.create({
       title: 'Add to cart successfully',
@@ -109,7 +110,6 @@ export class ProductsPage implements OnInit{
     this.productImagePath = product.imagePath;
     this.productPrice = product.price;
     this.isLiked = product.isLiked;
-    this.segmentButton = 'productDetails';
     this.description = 'Lorem Ipsum';
     this.tag = product.tag;
     this.productService.getImageByTag(this.tag).subscribe(

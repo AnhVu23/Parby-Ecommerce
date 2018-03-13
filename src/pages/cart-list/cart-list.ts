@@ -17,29 +17,21 @@ import {Payment_1Page} from "../payment-1/payment-1";
 })
 export class CartListPage implements OnInit{
   payment1Page = Payment_1Page
-  numberOfItems: number;
-  totalCost: number;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private cartService: CartService) {
   }
 
   ngOnInit() {
-    this.onUpdate();
   }
 
   onCheckOut() {
     this.navCtrl.push(this.payment1Page, {
-      'cost': this.totalCost
+      'cost': this.cartService.priceSum
     });
   }
 
   onRemoveProduct(index: number) {
     this.cartService.removeProduct(index);
-    this.onUpdate();
   }
 
-  onUpdate() {
-    this.numberOfItems = this.cartService.productsArray.length;
-    this.totalCost = +this.cartService.calculatePrice().toFixed(2);
-  }
 }

@@ -66,7 +66,7 @@
   </div>
 
   <div>
-    <ion-segment>
+    <ion-segment [(ngModel)]="segmentButton">
       <ion-segment-button value="productDetails" (ionSelect)="onSelectProductDetails()">PRODUCT DETAILS</ion-segment-button>
       <ion-segment-button value="deliveryTime" (ionSelect)="onSelectDeliveryTime()">DELIVERY TIME</ion-segment-button>
     </ion-segment>
@@ -75,13 +75,6 @@
   <div [ngSwitch]="segmentButton">
     <ion-item *ngSwitchCase="'productDetails'">
       <h2>{{description}}</h2>
-      <!--<ul>-->
-        <!--<li>Custom printed boots.</li>-->
-        <!--<li>Man-made leather with a double-sided print and rounded toe construction.</li>-->
-        <!--<li>Lace-up closure for a snug fit.</li>-->
-        <!--<li>Soft textile lining with sturdy construction for maximum comfort.</li>-->
-        <!--<li>High-quality rubber outsole for traction and exceptional durability.</li>-->
-      <!--</ul>-->
     </ion-item>
     <ion-item *ngSwitchCase="'deliveryTime'">
       <h2>4 days</h2>
@@ -115,7 +108,7 @@
           <rating-show [rate]="review.rating"></rating-show>
         </ion-row>
         <ion-row>
-          <ion-textarea [value]="review.commentContent"></ion-textarea>
+          <p>{{review.commentContent}}</p>
         </ion-row>
         <ion-row>
           <ion-label class="label-username">{{review.userName}}</ion-label>
