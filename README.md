@@ -18,38 +18,38 @@ The project is implemented on the base of Ionic mobile app framework, which is b
 
 <h2>Screenshots</h2>
 Sign In
-<img src="src/assets/screenshots/SignIn.png>
+<img src="https://user-images.githubusercontent.com/22562689/37619700-e6203e60-2bc2-11e8-8ca7-fb151318b554.png">
 
 Home Page
-<img src="src/assets/screenshots/homepage1.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619790-2c89c844-2bc3-11e8-834d-d1791d0d454d.jpg">
 
-<img src="src/assets/screenshots/homepage.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619791-2ca470f4-2bc3-11e8-8c19-ff3588c1a692.jpg">
 
 Product
 
-<img src="src/assets/screenshots/product1.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619792-2cc0396a-2bc3-11e8-85ed-d3cef0fcdaaf.jpg">
 
-<img src=""src/assets/screenshots/product2.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619793-2cd85e3c-2bc3-11e8-9852-b84324a1c008.jpg">
 
-<img src="src/assets/screenshots/product3.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619794-2d0c1092-2bc3-11e8-956b-a8fcfbc4d161.jpg">
 
-<img src="src/assets/screenshots/product4.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619795-2d284c44-2bc3-11e8-86c3-f5872289fb5d.jpg">
 
 Search
 
-<img src="src/assets/screenshots/search.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619750-0b6d8fc4-2bc3-11e8-8d46-24a718619ffb.jpg">
 
 Review
 
-<img src="src/assets/screenshots/review.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619749-0b51940e-2bc3-11e8-9916-0b0f16d02d6a.png">
 
 Wish List
 
-<img src="src/assets/screenshots/wishlist1.jpg">
+<img src="https://user-images.githubusercontent.com/22562689/37619796-2d41c624-2bc3-11e8-9adc-b425ed14b688.jpg">
 
 Cart List
 
-<img src="src/assets/screenshots/cartlist1.png">
+<img src="https://user-images.githubusercontent.com/22562689/37619789-2c6d3fd0-2bc3-11e8-8102-0712ee627319.jpg">
 
 <h2>Team Members</h2>
 <a href="https://github.com/AnhVu23"><strong>Anh Vu</strong></a> - Frontend developer </br>
